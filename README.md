@@ -16,7 +16,7 @@ Universal MRI visualization and post-processing tool (in development).
 ## Setup
 
 1. Create `.env` in the repo root (not committed) with:
-   - `SUPABASE_API_KEY` — Postgres connection string for the Supabase project
+   - `SUPABASE_DB_URL` — Postgres connection string for the Supabase project
    - `META_API_KEY` — Meta services key
 2. Create the schema by running `supabase/schema.sql` in the Supabase SQL editor.
 

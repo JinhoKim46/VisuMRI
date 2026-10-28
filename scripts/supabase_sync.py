@@ -4,7 +4,7 @@ Reads:
   datasets/index.yaml   -> top-level key `datasets`
   kb/references.yaml    -> top-level key `references`; each may list `linked_datasets`
 
-Connection: SUPABASE_API_KEY in .env, which holds a Postgres connection string.
+Connection: SUPABASE_DB_URL in .env, which holds a Postgres connection string.
 It is read at runtime and never printed.
 
 Usage (run from the repo root, with the venv):
@@ -103,7 +103,7 @@ def main() -> None:
     parser.add_argument("--schema", action="store_true", help="run supabase/schema.sql first")
     args = parser.parse_args()
 
-    dsn = load_env(ROOT / ".env")["SUPABASE_API_KEY"]
+    dsn = load_env(ROOT / ".env")["SUPABASE_DB_URL"]
     datasets = yaml.safe_load((ROOT / "datasets" / "index.yaml").read_text())["datasets"]
     references = yaml.safe_load((ROOT / "kb" / "references.yaml").read_text())["references"]
 

@@ -36,7 +36,7 @@ Use these by default:
 
 ## Rules
 
-- **Secrets**: `.env` holds `SUPABASE_API_KEY` (a Postgres DSN for the Supabase project) and `META_API_KEY`. Read them from `.env` at runtime. Never hard-code or print them, never commit `.env`.
+- **Secrets**: `.env` holds `SUPABASE_DB_URL` (a Postgres DSN for the Supabase project) and `META_API_KEY`. Read them from `.env` at runtime. Never hard-code or print them, never commit `.env`.
 - **Large raw files stay out of git.** Store the source URL and a download script instead.
 - **Every dataset needs**: anatomy, format, source URL, license/usage terms (flag unknown ones as `[license to verify]`), acquisition parameters if available, file size, and the page actually fetched as evidence.
 - **Every reference needs**: citation, DOI or URL (verify it resolves), data-type tags, anatomy tags, a 1–2 line display recommendation.
