@@ -1,0 +1,171 @@
+# Literature review for VisuMRI. Each entry fetched by the agent (page, PMC, arXiv, or Crossref registry record).
+# verification_note flags where the display_recommendation rests on abstract only vs full text.
+references:
+  - id: pubmed-42640344
+    citation: "Kim J, Werner S, Afat S, Nickel MD, Knoll F. Clinical evaluation of nnU-Net-based segmentation for enhanced MRCP maximum intensity projection visualization. MAGMA, 2026 (online 2026-08-25)."
+    doi: "10.1007/s10334-026-01407-x"
+    url: "https://pubmed.ncbi.nlm.nih.gov/42640344/"
+    data_type: [angiography]
+    anatomy: [abdomen, pancreatobiliary]
+    display_recommendation: "Segment the volume into primary vs secondary structures (conservative safety margins) and suppress overlapping bright secondary anatomy before the MIP; readers scored overlap 3.5 vs 2.5 and confidence 3.4 vs 3.2 (4-pt Likert)."
+    verified: true
+    verification_note: "PubMed page fetched (title, authors, journal, date, DOI, abstract). doi.org resolves via 302 to link.springer.com but the Springer page itself redirects to an auth gate, so DOI-to-publisher content was not read. Note it is MRCP (heavily T2 bright-fluid), not contrast MRA."
+  - id: tanenbaum-2002-mra-rendering
+    citation: "Tanenbaum LN. Advanced MRA rendering techniques: a pictorial review. Applied Radiology 31(5):18-28, 2002."
+    url: "https://www.appliedradiology.com/articles/advanced-mra-rendering-techniques-a-pictorial-review-cme"
+    data_type: [angiography]
+    anatomy: [general, neurovascular, renal]
+    display_recommendation: "Review MIP over a full range of projection angles (about 180 degrees), use limited-volume or thin overlapping slab MIPs to avoid overlap, treat thresholded renderings as a supplement not a replacement, and keep source images for measurement."
+    verified: true
+    verification_note: "Page fetched. No DOI found (trade journal)."
+  - id: tsuruda-1992-mra-artifacts
+    citation: "Tsuruda J, Saloner D, Norman D. Artifacts associated with MR neuroangiography. AJNR Am J Neuroradiol 13(5):1411-22, 1992."
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC8335209"
+    data_type: [angiography]
+    anatomy: [brain, neurovascular]
+    display_recommendation: "Edit/crop the volume boundaries before MIP so unwanted structures do not project over vessels, and always check individual source images rather than relying on projections alone."
+    verified: true
+    verification_note: "PMC page fetched (abstract level; PMID 1414835). No DOI listed on the page."
+  - id: fishman-2006-vr-vs-mip
+    citation: "Fishman EK, Ney DR, Heath DG, Corl FM, Horton KM, Johnson PT. Volume rendering versus maximum intensity projection in CT angiography: what works best, when, and why. RadioGraphics 26(3):905-922, 2006."
+    doi: "10.1148/rg.263055186"
+    data_type: [angiography]
+    anatomy: [general]
+    display_recommendation: "Offer both MIP (brightest voxel per ray, loses depth/3D relationships) and volume rendering, and pick per task. CT-based, included as the standard MIP-vs-VR reference."
+    verified: true
+    verification_note: "Title, authors, journal, year confirmed from the Crossref DOI registry record. Full text paywalled (403), so the recommendation is taken from the abstract plus secondary description. Modality is CT, not MRI."
+  - id: scmr-2020-postprocessing
+    citation: "Schulz-Menger J, Bluemke DA, Bremerich J, et al. (SCMR Board of Trustees Task Force on Standardized Post-Processing). Standardized image interpretation and post-processing in cardiovascular magnetic resonance - 2020 update. J Cardiovasc Magn Reson 22:19, 2020."
+    doi: "10.1186/s12968-020-00610-6"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7066763"
+    data_type: [static_3d_volumes, dynamic_time_series, quantitative_maps]
+    anatomy: [heart, aorta]
+    display_recommendation: "View all short-axis cines together as movies and cross-reference with long-axis planes; measure on double-oblique MPR perpendicular to vessel centerline; T1/T2 maps may be shown in colour only with look-up tables set to site-specific normal ranges, with greyscale as an alternative that may reduce ROI bias."
+    verified: true
+    verification_note: "PMC full text fetched (first 100k of 171k chars). The document defines no left-right/radiological display convention."
+  - id: kramer-2020-cmr-protocols
+    citation: "Kramer CM, Barkhausen J, Bucciarelli-Ducci C, Flamm SD, Kim RJ, et al. (6 authors). Standardized cardiovascular magnetic resonance imaging (CMR) protocols: 2020 update. J Cardiovasc Magn Reson 22:17, 2020."
+    doi: "10.1186/s12968-020-00607-1"
+    data_type: [dynamic_time_series]
+    anatomy: [heart]
+    display_recommendation: "Protocol document: standardises the cine plane set (short-axis stack plus long-axis views) that a cine viewer needs to present together; it does not prescribe loop or x-t display settings."
+    verified: true
+    verification_note: "Authorship (6 authors; first five captured), journal, year, DOI confirmed from the Crossref record only. Content not read (Springer and PMC blocked), so the recommendation is weak. Treat as supporting reference."
+  - id: pednekar-2011-mmode-cine
+    citation: "Pednekar A, Arena C, Swaab J, Cheong B, Muthupillai R. Ultrafast in-line interactive m-mode tool for quantification of left-ventricular septo-lateral wall motion from high-temporal resolution (6-12 ms) cardiac cine SSFP images. J Cardiovasc Magn Reson 13(Suppl 1):P37, 2011 (conference abstract)."
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC3106929/"
+    data_type: [dynamic_time_series]
+    anatomy: [heart]
+    display_recommendation: "Show an x-t (M-mode) strip from a user-drawn line beside the cine, with markers for end-systole and onset of peak septal/lateral contraction, plus a percent radial contraction curve."
+    verified: true
+    verification_note: "PMC page fetched. This is a tool description in a conference abstract, not a guideline."
+  - id: crameri-2020-misuse-colour
+    citation: "Crameri F, Shephard GE, Heron PJ. The misuse of colour in science communication. Nature Communications 11:5444, 2020."
+    doi: "10.1038/s41467-020-19160-7"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC7595127"
+    data_type: [quantitative_maps]
+    anatomy: [general]
+    display_recommendation: "Do not use rainbow colormaps; use perceptually uniform, monotonic-lightness maps matched to data type (sequential vs diverging), colour-vision-deficiency safe, never stretched, and always with a colour bar."
+    verified: true
+    verification_note: "PMC full text fetched; DOI resolves (302 to nature.com, auth gate)."
+  - id: fuderer-2025-relaxometry-colormaps
+    citation: "Fuderer M, Wichtmann B, Crameri F, et al. (Delphi consensus). Color-map recommendation for MR relaxometry maps. Magn Reson Med 93(2):490-506, 2025 (online 2024-10-16)."
+    doi: "10.1002/mrm.30290"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC11604837/"
+    data_type: [quantitative_maps]
+    anatomy: [general]
+    display_recommendation: "Show T1/R1 with the log-processed Lipari colormap and T2/T2*/R2/R2* with log-processed Navia; value 0 (invalid) displayed black; include a colour bar with numbers and units; same maps for all anatomies."
+    verified: true
+    verification_note: "PMC full text fetched. 'ISMRM-endorsed' is my shorthand: the fetched page lists authors only; the ISMRM affiliation was not confirmed from the page, so treat it as an unverified detail."
+  - id: messroghli-2017-scmr-mapping
+    citation: "Messroghli DR, Moon JC, Ferreira VM, Grosse-Wortmann L, He T, Kellman P, Mascherbauer J, Nezafat R, Salerno M, Schelbert EB, Taylor AJ, Thompson R, Ugander M, van Heeswijk RB, Friedrich MG. Clinical recommendations for cardiovascular magnetic resonance mapping of T1, T2, T2* and extracellular volume: a consensus statement by SCMR endorsed by EACVI. J Cardiovasc Magn Reson 19:75, 2017."
+    doi: "10.1186/s12968-017-0389-8"
+    url: "https://www.springermedizin.de/clinical-recommendations-for-cardiovascular-magnetic-resonance-m/15119812"
+    data_type: [quantitative_maps]
+    anatomy: [heart]
+    display_recommendation: "Maps may be shown in colour if the colour look-up table is set to site-specific normal ranges, or in greyscale with suitable processing to highlight abnormality; no display-orientation rule given."
+    verified: true
+    verification_note: "Springer Medizin full-text page fetched (first 100k of 194k chars); PubMed PMID 28992817 listing also fetched."
+  - id: qsm-consensus-2024
+    citation: "QSM Consensus Organization Committee (Bilgic B, Costagli M, Chan K-S, Duyn J, Langkammer C, Lee J, Li X, Liu C, Marques JP, Milovic C, Robinson S, Schweser F, Shmueli K, Spincemaille P, Straub S, van Zijl P, Wang Y). Recommended implementation of quantitative susceptibility mapping for clinical research in the brain: a consensus of the ISMRM Electro-Magnetic Tissue Properties Study Group. Magn Reson Med 91(5):1834-1862, 2024."
+    doi: "10.1002/mrm.30006"
+    url: "https://pmc.ncbi.nlm.nih.gov/articles/PMC10950544"
+    data_type: [quantitative_maps, static_3d_volumes]
+    anatomy: [brain]
+    display_recommendation: "Default to linear greyscale (about -0.2 to +0.2 ppm for healthy brain), or a linear perceptually uniform colormap, never jet/rainbow; state the window with a bar or caption, mask to the reliable region, report ppm/ppb with reference region, and check left-right against radiological convention."
+    verified: true
+    verification_note: "PMC full text fetched (first 100k of 266k chars, which contained Section 9)."
+  - id: nibabel-neuro-radio-conventions
+    citation: "NiBabel developers. Radiological vs neurological conventions (NiBabel documentation page)."
+    url: "https://nipy.org/nibabel/neuro_radio_conventions.html"
+    data_type: [static_3d_volumes]
+    anatomy: [brain, general]
+    display_recommendation: "Radiological shows patient left on image right, neurological shows patient right on image right; both are display choices. Define voxel axes by scanner RAS+ alignment and let the viewer flip, instead of baking in a convention."
+    verified: true
+    verification_note: "Documentation page, not a peer-reviewed paper. Fetched."
+  - id: fieldtrip-plotting-convention
+    citation: "FieldTrip toolbox FAQ. How do I know whether my anatomical MRI is in neurological or radiological convention? (documentation page)."
+    url: "https://www.fieldtriptoolbox.org/faq/plotting/anat_plottingconvention/"
+    data_type: [static_3d_volumes]
+    anatomy: [brain, general]
+    display_recommendation: "Do not assume a convention; derive it per dataset from the sign of the determinant of the voxel-to-world matrix (negative = left-handed, i.e. flipped) and verify by clicking along the left-right axis."
+    verified: true
+    verification_note: "Documentation page, not peer-reviewed. Fetched."
+  - id: roemer-1990-nmr-phased-array
+    citation: "Roemer PB, Edelstein WA, Hayes CE, Souza SP, Mueller OM. The NMR phased array. Magn Reson Med 16(2):192-225, 1990."
+    doi: "10.1002/mrm.1910160203"
+    data_type: [kspace_and_coil]
+    anatomy: [general]
+    display_recommendation: "Combine per-coil images with the optimal-SNR algorithm or the simpler root-sum-of-squares of coil magnitudes (near-optimal at high SNR, but raises noise floor in dark regions and loses phase)."
+    verified: true
+    verification_note: "Title, authors, journal, year confirmed from the Crossref DOI registry record; full text not read. Sum-of-squares caveats come from secondary search snippets."
+  - id: zbontar-2018-fastmri
+    citation: "Zbontar J, Knoll F, Sriram A, Murrell T, Huang Z, et al. (27 authors). fastMRI: an open dataset and benchmarks for accelerated MRI. arXiv:1811.08839 (v2 2019-12-11), 2018."
+    doi: "10.48550/arXiv.1811.08839"
+    url: "https://arxiv.org/abs/1811.08839"
+    data_type: [kspace_and_coil, reconstruction_comparison]
+    anatomy: [knee, brain]
+    display_recommendation: "Show multi-coil k-space and per-coil images as a coil mosaic; ground truth is RSS of coil images, center-cropped to 320x320 (flipped vertically in figures); compare zero-filled vs model recon vs ground truth; report NMSE over volumes, PSNR, and SSIM (7x7 window, k1=0.01, k2=0.03)."
+    verified: true
+    verification_note: "arXiv abstract page fetched; method details came from the ar5iv HTML rendering of the paper. The paper does not describe error maps."
+  - id: knoll-2020-fastmri-dataset
+    citation: "Knoll F, Zbontar J, Sriram A, Muckley MJ, Bruno M, Defazio A, et al. (23 authors). fastMRI: a publicly available raw k-space and DICOM dataset of knee images for accelerated MR image reconstruction using machine learning. Radiology: Artificial Intelligence 2(1):e190007, 2020."
+    doi: "10.1148/ryai.2020190007"
+    data_type: [kspace_and_coil, reconstruction_comparison]
+    anatomy: [knee]
+    display_recommendation: "Reference for the knee raw k-space and DICOM pairing used as ground truth for recon comparison."
+    verified: true
+    verification_note: "Title, authors, journal, year confirmed from the Crossref registry only; content not read. Weak recommendation, treat as dataset citation."
+  - id: knoll-2020-fastmri-challenge-overview
+    citation: "Knoll F, Murrell T, Sriram A, Yakubova N, Zbontar J, Rabbat M, et al. (11 authors). Advancing machine learning for MR image reconstruction with an open competition: overview of the 2019 fastMRI challenge. Magn Reson Med 84(6):3054-3070, 2020."
+    doi: "10.1002/mrm.28338"
+    data_type: [reconstruction_comparison]
+    anatomy: [knee]
+    display_recommendation: "Judge reconstructions in two stages: quantitative metrics first, then blinded radiologist panel, since metric scores alone are not enough."
+    verified: true
+    verification_note: "Crossref record fetched for title/authors/journal/year/DOI; volume/pages and abstract details from a search summary and arXiv 2001.02518, which I did not open."
+  - id: muckley-2021-fastmri-challenge
+    citation: "Muckley MJ, Riemenschneider B, Radmanesh A, Kim S, Jeong G, Ko J, Jun Y, Shin H, Hwang D, Mostapha M, Arberet S, Nickel D, Ramzi Z, Ciuciu P, Starck J-L, Teuwen J, Karkalousos D, Zhang C, Sriram A, Huang Z, Yakubova N, Lui Y, Knoll F. Results of the 2020 fastMRI challenge for machine learning MR image reconstruction. IEEE Trans Med Imaging 40(9):2306-2317, 2021."
+    doi: "10.1109/TMI.2021.3075856"
+    url: "https://arxiv.org/abs/2012.06318"
+    data_type: [reconstruction_comparison]
+    anatomy: [brain]
+    display_recommendation: "Pair SSIM with radiologist pathology assessment, consider metrics less affected by background noise, and inspect failure modes visually (hallucinated or lost small pathology)."
+    verified: true
+    verification_note: "arXiv abstract page fetched. The journal volume and pages come from a search summary, not the page."
+  - id: mason-2020-iqm-vs-radiologists
+    citation: "Mason A, Rioux J, Clarke SE, Costa A, Schmidt M, Keough V, Huynh T, Beyea S. Comparison of objective image quality metrics to expert radiologists' scoring of diagnostic quality of MR images. IEEE Trans Med Imaging 39(4):1064-1072, 2020."
+    doi: "10.1109/TMI.2019.2930338"
+    data_type: [reconstruction_comparison]
+    anatomy: [brain, abdomen]
+    display_recommendation: "Do not rely on RMSE or SSIM alone; in this study VIF, FSIM, NQM, GMSD, IWSSIM and HDRVDP correlated better with radiologist scores, so show several metrics and the images."
+    verified: true
+    verification_note: "Crossref record fetched for authors/journal/pages; IEEE Xplore and DataPort page also fetched (DOI confirmed). Findings from search summary of abstract."
+  - id: wang-2004-ssim
+    citation: "Wang Z, Bovik AC, Sheikh HR, Simoncelli EP. Image quality assessment: from error visibility to structural similarity. IEEE Trans Image Process 13(4), 2004."
+    doi: "10.1109/TIP.2003.819861"
+    data_type: [reconstruction_comparison]
+    anatomy: [general]
+    display_recommendation: "Defines SSIM, the local-structure similarity index used with PSNR to score reconstructions against a reference."
+    verified: true
+    verification_note: "Title, authors, journal, year confirmed from the Crossref registry only; content not read. Recommendation is the definitional role, not a display guideline."
