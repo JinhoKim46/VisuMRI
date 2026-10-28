@@ -3,7 +3,7 @@
 - **Anatomy:** knee
 - **Formats:** ISMRMRD, HDF5, DICOM
 - **Access:** gated
-- **License:** NYU fastMRI data may be used for internal research or educational purposes only as described in the data use agreement (status: stated)
+- **License:** NYU fastMRI data may be used for internal research or educational purposes only as described in the data use agreement (status: license to verify)
 - **Source:** https://fastmri.med.nyu.edu/
 - **Page title (evidence):** fastMRI Dataset
 - **Size:** 1,500+ fully sampled raw knee MRIs (Table 1: 1,398 = 697 PD + 701 PD-FS); DICOM from 10,000 clinical knee MRIs; total GB not published on page

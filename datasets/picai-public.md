@@ -23,8 +23,8 @@ Format is MHA (MetaImage), not NIfTI; convertible. Labels on GitHub DIAGNijmegen
 ```yaml
 inspected: false
 basis: documentation only
-reason: No reproducible individual sample selected in this pass; source retrieved
-  but download workflow remains unverified.
+reason: 'Range HEAD probe: HTTP/1.1 200 OK, content-type: application/octet-stream,
+  content-length: 5368893021. No ZIP downloaded because HTTP 206 was not returned.'
 dimensions: unknown
 coil_count: unknown
 static_or_dynamic: unknown

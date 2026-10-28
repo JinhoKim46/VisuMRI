@@ -19,8 +19,8 @@ See the dated sample verification below.
 ```yaml
 inspected: false
 basis: documentation only
-reason: No reproducible individual sample selected in this pass; source retrieved
-  but download workflow remains unverified.
+reason: 'Range HEAD probe: HTTP/1.1 200 OK, Content-Type: text/html; charset=UTF-8.
+  No ZIP downloaded because HTTP 206 was not returned.'
 dimensions: unknown
 coil_count: unknown
 static_or_dynamic: unknown

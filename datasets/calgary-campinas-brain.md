@@ -23,8 +23,8 @@ Via CONP portal or site download form (some benchmarks form-only). CC BY-ND forb
 ```yaml
 inspected: false
 basis: documentation only
-reason: No reproducible individual sample selected in this pass; source retrieved
-  but download workflow remains unverified.
+reason: Source routes downloads through CONP or a request form; no direct anonymous
+  sample URL was verified. No form submitted.
 dimensions: unknown
 coil_count: unknown
 static_or_dynamic: unknown

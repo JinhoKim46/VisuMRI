@@ -23,9 +23,9 @@ This is a third-party HF mirror of the mridata.org Stanford fully sampled 3D FSE
 ```yaml
 inspected: false
 basis: documentation only
-reason: Public API lists individual HDF5 files of 3,565,160,448 bytes; download deferred
-  because these are multi-GB samples. Mirror license read as cc-by-nc-4.0; original
-  license unverified.
+reason: 'Public HDF5 download timed out after 300 seconds: 1,238,820,537 of 3,565,160,448
+  bytes received. Incomplete file removed; no header inspection attempted. Mirror
+  license CC BY-NC 4.0; original mridata.org license unverified.'
 dimensions: unknown
 coil_count: unknown
 static_or_dynamic: unknown

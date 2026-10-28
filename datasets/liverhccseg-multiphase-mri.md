@@ -3,7 +3,7 @@
 - **Anatomy:** liver
 - **Formats:** DICOM, NIfTI
 - **Access:** open
-- **License:** Creative Commons Attribution 4.0 International (CC BY 4.0) (status: stated)
+- **License:** cc-by-4.0 (status: stated)
 - **Source:** https://zenodo.org/records/8179129
 - **Page title (evidence):** LiverHccSeg: A Publicly Available Multiphasic MRI Dataset with Liver and HCC Tumor Segmentations and Inter-Rater Agreement Analysis (Zenodo v1.1)
 - **Size:** 2.6 GB total: dicoms.zip 1.7 GB, nifti_and_segms.zip 977.9 MB (both >200 MB, not downloaded); metadata xlsx 12.9 kB

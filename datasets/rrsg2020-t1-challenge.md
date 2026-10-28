@@ -3,7 +3,7 @@
 - **Anatomy:** T1 mapping
 - **Formats:** unknown
 - **Access:** open
-- **License:** Creative Commons Zero v1.0 Universal (CC0) (status: stated)
+- **License:** cc-zero (status: stated)
 - **Source:** https://zenodo.org/records/8419809
 - **Page title (evidence):** Results of the ISMRM 2020 joint Reproducible Research & Quantitative MR study groups reproducibility challenge on phantom and human brain T1 mapping | Zenodo
 - **Size:** 217.1 MB (single zip Dataset_10.55458_NeuroLibre_00014_2654c1.zip) - over 200 MB, not downloaded

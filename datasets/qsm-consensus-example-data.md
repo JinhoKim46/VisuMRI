@@ -3,7 +3,7 @@
 - **Anatomy:** QSM
 - **Formats:** DICOM, NIfTI
 - **Access:** open
-- **License:** Creative Commons Attribution 4.0 International (CC BY 4.0) (status: stated)
+- **License:** cc-by-4.0 (status: stated)
 - **Source:** https://zenodo.org/records/7795492
 - **Page title (evidence):** Recommended Implementation of Quantitative Susceptibility Mapping for Clinical Research in The Brain: A Consensus of the ISMRM Electro-Magnetic Tissue Properties Study Group
 - **Size:** 7.1 GB total (Example_Data_Result_Code 6.1 GB; Example_DICOM_Code 1.0 GB)

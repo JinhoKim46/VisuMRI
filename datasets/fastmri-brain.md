@@ -3,7 +3,7 @@
 - **Anatomy:** brain
 - **Formats:** HDF5
 - **Access:** gated
-- **License:** NYU fastMRI data may be used for internal research or educational purposes only as described in the data use agreement (status: stated)
+- **License:** NYU fastMRI data may be used for internal research or educational purposes only as described in the data use agreement (status: license to verify)
 - **Source:** https://fastmri.med.nyu.edu/
 - **Page title (evidence):** fastMRI Dataset
 - **Size:** 6,970 fully sampled brain MRIs per text (Table 2 totals 7,002: 3,012 at 1.5T, 3,990 at 3T); GB not published

@@ -3,7 +3,7 @@
 - **Anatomy:** prostate
 - **Formats:** ISMRMRD, HDF5, DICOM
 - **Access:** gated
-- **License:** No separate license named. 'Each dataset has its own Data Sharing Agreement.' 'NYU fastMRI data may be used for internal research or educational purposes only' (status: stated)
+- **License:** No separate license named. 'Each dataset has its own Data Sharing Agreement.' 'NYU fastMRI data may be used for internal research or educational purposes only' (status: license to verify)
 - **Source:** https://fastmri.med.nyu.edu/
 - **Page title (evidence):** fastMRI Dataset (heading: Welcome to the fastMRI Dataset); also NYU Data Catalog 'fastMRI' https://datacatalog.med.nyu.edu/dataset/10389
 - **Size:** not published (312 exams)

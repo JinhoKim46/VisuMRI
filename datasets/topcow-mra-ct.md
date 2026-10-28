@@ -3,7 +3,7 @@
 - **Anatomy:** angiography
 - **Formats:** NIfTI
 - **Access:** open
-- **License:** CC BY-NC (Attribution-NonCommercial). By downloading the data you agree with the license terms. (CROWN subset: its own data usage agreement.) (status: stated)
+- **License:** CC BY-NC (Attribution-NonCommercial). By downloading the data you agree with the license terms. (CROWN subset: its own data usage agreement.) (status: license to verify)
 - **Source:** https://topcow23.grand-challenge.org/data/
 - **Page title (evidence):** Data - Topology-Aware Anatomical Segmentation of the Circle of Willis - Grand Challenge
 - **Size:** not published on this page (patient counts only: 90 train, 5 val, 35 test, plus 20 CROWN MRAs). Zenodo record 15692630 lists 14.4 GB total; TopCoW2024_Data_Release.zip 10.5 GB
@@ -23,8 +23,8 @@ Latest data on Zenodo https://zenodo.org/records/15692630 (page title 'TopCoW Tr
 ```yaml
 inspected: false
 basis: documentation only
-reason: No reproducible individual sample selected in this pass; source retrieved
-  but download workflow remains unverified.
+reason: 'Range HEAD probe: HTTP/1.1 200 OK, content-type: application/octet-stream,
+  content-length: 10512833650. No ZIP downloaded because HTTP 206 was not returned.'
 dimensions: unknown
 coil_count: unknown
 static_or_dynamic: unknown

@@ -3,12 +3,12 @@
 - **Anatomy:** prostate
 - **Formats:** NIfTI
 - **Access:** open
-- **License:** CC-BY-SA 4.0 International (status: stated)
+- **License:** AWS registry label says CC-BY-SA 4.0 International but links to CC BY 4.0; conflicting source evidence, license to verify. (status: license to verify)
 - **Source:** https://registry.opendata.aws/msd/
 - **Page title (evidence):** Medical Segmentation Decathlon - Registry of Open Data on AWS
 - **Size:** not published for the prostate task on this page (tasks as tar.gz and uncompressed; s3://msd-for-monai, s3://msd-for-monai-eu)
 - **Acquisition parameters:** not published on fetched page (medicaldecathlon.com could not be fetched)
-- **Sample file:** none; see reason below
+- **Sample file:** data/raw/msd-prostate/prostate_16.nii.gz
 
 ## Analysis
 
@@ -21,14 +21,28 @@ Task05 Prostate details (T2 + ADC, case count) not verified by fetch.
 ## Sample verification — 2026-10-28
 
 ```yaml
-inspected: false
-basis: documentation only
-reason: No reproducible individual sample selected in this pass; source retrieved
-  but download workflow remains unverified.
-dimensions: unknown
-coil_count: unknown
+format: NIfTI
+shape: &id001
+- 320
+- 320
+- 20
+- 2
+voxel_size_mm:
+- 0.625
+- 0.625
+- 3.6
+domain: image
 static_or_dynamic: unknown
-domain: unknown
-fields_read: []
+coil_count: unknown
+fields_read:
+- NIfTI dim
+- NIfTI pixdim
+fourth_dimension_size: 2
+inspected: true
+basis: file header
+sample_path: data/raw/msd-prostate/prostate_16.nii.gz
 source_checked_at: '2026-10-28'
+dimensions: *id001
+caveat: Fourth dimension length 2 is not proof of time points; temporal semantics
+  unknown from header.
 ```

@@ -1,8 +1,11 @@
 """Fetch a pinned sample: .venv/bin/python -I scripts/fetch_sample.py <id>."""
 import hashlib
+import io
+import zipfile
 import shutil
 import subprocess
 import sys
+import tarfile
 import urllib.request
 from pathlib import Path
 
@@ -45,7 +48,19 @@ def fetch(id):
     directory.mkdir(parents=True, exist_ok=True)
     temporary = directory / (filename + '.partial')
     try:
-        if item.get('zip_member'):
+        if item.get('zip_member') and item.get('archive_size', 200000001) <= 200000000:
+            with urllib.request.urlopen(item['url'], timeout=60) as response:
+                payload = response.read(item['archive_size'] + 1)
+            if len(payload) > item['archive_size']:
+                raise ValueError('archive exceeds recorded size')
+            with zipfile.ZipFile(io.BytesIO(payload)) as archive:
+                member = archive.getinfo(item['zip_member'])
+                safe_name(member.filename)
+                if member.file_size != item['size']:
+                    raise ValueError('archive member size mismatch')
+                with archive.open(member) as source, temporary.open('xb') as target:
+                    shutil.copyfileobj(source, target)
+        elif item.get('zip_member'):
             headers = subprocess.check_output(['curl', '-sI', '--max-time', '30', '-H', 'Range: bytes=0-0', item['url']], text=True)
             if not any(line.startswith('HTTP/') and line.split()[1] == '206' for line in headers.splitlines()):
                 raise ValueError('range probe did not return 206; refusing full archive')
@@ -56,6 +71,19 @@ def fetch(id):
                     raise ValueError('archive member size mismatch')
                 with archive.open(member) as source, temporary.open('xb') as target:
                     shutil.copyfileobj(source, target)
+        elif item.get("tar_member"):
+            with urllib.request.urlopen(item["url"], timeout=60) as response, tarfile.open(fileobj=response, mode="r|*") as archive:
+                for member in archive:
+                    safe_name(member.name)
+                    if member.name != item["tar_member"]:
+                        continue
+                    if not member.isfile() or member.size != item["size"]:
+                        raise ValueError("invalid TAR member type or size")
+                    with archive.extractfile(member) as source, temporary.open("xb") as target:
+                        shutil.copyfileobj(source, target)
+                    break
+                else:
+                    raise ValueError("TAR member not found")
         else:
             with urllib.request.urlopen(item['url'], timeout=60) as source, temporary.open('xb') as target:
                 remaining = item['size']

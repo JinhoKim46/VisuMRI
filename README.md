@@ -38,6 +38,8 @@ A local, Docker-based web app will live on a separate branch.
 
 ## Pinned samples
 
-Run `.venv/bin/python -I scripts/fetch_sample.py <id>`. The manifest at `datasets/samples.yaml` records exact sample hashes or explicit blockers. Downloads stay in ignored `data/raw/<id>/` directories. An existing matching file is verified and reused; other existing files are preserved. ZIP members require a successful HTTP 206 range probe. Null hashes mean no verified sample is available.
+Run `.venv/bin/python -I scripts/fetch_sample.py <id>`. The manifest at `datasets/samples.yaml` records exact sample hashes or explicit blockers. Downloads stay in ignored `data/raw/<id>/` directories. An existing matching file is verified and reused; other existing files are preserved. ZIP archives over 200 MB require a successful HTTP 206 range probe. TAR archives are streamed until the pinned member is reached; small ZIPs are size-bounded before extraction. Null hashes mean no verified sample is available.
 
 Run `.venv/bin/python -I scripts/test_samples.py` for local safety checks. A header inspection does not validate the complete pixel payload or establish clinical suitability.
+
+See [sample collection status](datasets/SAMPLE_STATUS.md) for inspected datasets and download blockers.

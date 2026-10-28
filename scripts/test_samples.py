@@ -39,3 +39,47 @@ with tempfile.TemporaryDirectory() as tmp:
     else:
         raise AssertionError('malformed ISMRMRD silently accepted')
 print('sample safety checks passed')
+
+import io
+import tarfile
+import yaml
+import zipfile
+
+with tempfile.TemporaryDirectory() as tmp:
+    root = Path(tmp)
+    (root / 'datasets').mkdir()
+    payload = b'fixture image bytes'
+    for kind in ('tar', 'zip'):
+        archive_path = root / ('sample.' + kind)
+        if kind == 'tar':
+            with tarfile.open(archive_path, 'w') as archive:
+                member = tarfile.TarInfo('nested/sample.nii')
+                member.size = len(payload)
+                archive.addfile(member, io.BytesIO(payload))
+        else:
+            with zipfile.ZipFile(archive_path, 'w') as archive:
+                archive.writestr('nested/sample.nii', payload)
+        item = dict(id=kind, url=archive_path.as_uri(), filename='sample.nii',
+                    size=len(payload), sha256=hashlib.sha256(payload).hexdigest(),
+                    archive_size=archive_path.stat().st_size)
+        item[kind + '_member'] = 'nested/sample.nii'
+        (root / 'datasets/samples.yaml').write_text(yaml.safe_dump({'samples': [item]}))
+        fetch.ROOT = root
+        path = fetch.fetch(kind)
+        assert path.read_bytes() == payload
+        assert fetch.fetch(kind) == path
+        path.write_bytes(b'do not overwrite')
+        try:
+            fetch.fetch(kind)
+        except ValueError:
+            assert path.read_bytes() == b'do not overwrite'
+        else:
+            raise AssertionError('existing file overwritten')
+    bart = root / 'bart.tgz'
+    with tarfile.open(bart, 'w:gz') as archive:
+        for name, content in [('sample.hdr', b'# Dimensions\n2 3 1\n'), ('sample.cfl', bytes(48))]:
+            member = tarfile.TarInfo(name)
+            member.size = len(content)
+            archive.addfile(member, io.BytesIO(content))
+    assert inspect.inspect(bart)['dimensions'] == [2, 3, 1]
+print('TAR, small ZIP, BART, and existing-file checks passed')

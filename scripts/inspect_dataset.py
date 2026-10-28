@@ -78,7 +78,7 @@ def inspect_nifti(path: Path) -> dict:
         "fields_read": ["NIfTI dim", "NIfTI pixdim"],
     }
     if len(shape) == 4 and shape[3] > 1:
-        info["time_points"] = shape[3]
+        info["fourth_dimension_size"] = shape[3]
     return info
 
 
@@ -89,6 +89,10 @@ def inspect_dicom(path: Path) -> dict:
     first = pydicom.dcmread(str(files[0]), stop_before_pixels=True)
     info = {
         "format": "DICOM",
+        "dimensions": [int(first.Rows), int(first.Columns)],
+        "coil_count": "unknown",
+        "static_or_dynamic": "unknown",
+        "fields_read": [tag for tag in ("Rows", "Columns", "NumberOfFrames", "Modality", "SeriesDescription", "SequenceName", "ReceiveCoilName", "MagneticFieldStrength") if tag in first],
         "file_count": len(files),
         "modality": str(getattr(first, "Modality", "")) or None,
         "series_description": str(getattr(first, "SeriesDescription", "")) or None,
@@ -100,7 +104,7 @@ def inspect_dicom(path: Path) -> dict:
     frames = getattr(first, "NumberOfFrames", None)
     if frames:
         info["frames"] = int(frames)
-        info["static_or_dynamic"] = "dynamic" if int(frames) > 1 else "static"
+        info["dimensions"].append(int(frames))
     info = {k: v for k, v in info.items() if v is not None}
     return info
 
@@ -115,8 +119,38 @@ def inspect_mha(path: Path) -> dict:
     return info
 
 
+def inspect_bart_archive(path: Path) -> dict:
+    import math
+    import tarfile
+
+    with tarfile.open(path) as archive:
+        members = archive.getmembers()
+        for member in members:
+            if '..' in member.name or member.name.startswith('/'):
+                raise ValueError('unsafe TAR member')
+        headers = [m for m in members if m.isfile() and m.name.endswith('.hdr') and '/ROIs/' not in m.name]
+        header = next((m for m in headers if '/T1maps/' in m.name), headers[0] if headers else None)
+        if header is None or header.size > 4096:
+            raise ValueError('missing or oversized BART header')
+        with archive.extractfile(header) as stream:
+            lines = stream.read().decode('ascii').splitlines()
+        dimensions = [int(v) for line in lines if not line.startswith('#') for v in line.split()]
+        if not dimensions or any(v <= 0 for v in dimensions):
+            raise ValueError('invalid BART dimensions')
+        payload = archive.getmember(header.name[:-4] + '.cfl')
+        if not payload.isfile() or payload.size != math.prod(dimensions) * 8:
+            raise ValueError('BART complex64 payload size does not match header')
+        return {'format': 'BART cfl/hdr in TAR', 'dimensions': dimensions,
+                'header_member': header.name, 'payload_member': payload.name,
+                'coil_count': 'unknown', 'static_or_dynamic': 'unknown', 'domain': 'unknown',
+                'fields_read': ['BART # Dimensions', 'TAR member names and sizes'],
+                'caveat': 'BART dimensions do not encode anatomy or axis semantics; domain and temporal behavior require acquisition documentation.'}
+
+
 def inspect(path: Path) -> dict:
     name = path.name.lower()
+    if name.endswith((".tgz", ".tar.gz")):
+        return inspect_bart_archive(path)
     if path.is_dir() or name.endswith(".dcm"):
         return inspect_dicom(path)
     if name.endswith(".nii") or name.endswith(".nii.gz"):

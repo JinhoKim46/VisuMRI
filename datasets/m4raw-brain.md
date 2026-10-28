@@ -3,7 +3,7 @@
 - **Anatomy:** brain
 - **Formats:** HDF5
 - **Access:** open
-- **License:** Creative Commons Attribution 4.0 International (CC BY 4.0). (status: stated)
+- **License:** cc-by-4.0 (status: stated)
 - **Source:** https://zenodo.org/records/8056074
 - **Page title (evidence):** M4Raw: A multi-contrast, multi-repetition, multi-channel MRI k-space dataset for low-field MRI research [V1.6] | Zenodo
 - **Size:** 27.9 GB total (zips: test 5.0, GRE 4.8, motion 2.5, train 12.7, val 3.0 GB)

@@ -23,8 +23,8 @@ Includes MP2RAGE inv2, T1w and quantitative T1 map per nighres docs (https://nig
 ```yaml
 inspected: false
 basis: documentation only
-reason: No reproducible individual sample selected in this pass; source retrieved
-  but download workflow remains unverified.
+reason: Published FTP endpoint ftp://141.5.101.133/ timed out after 20 seconds. Alternative
+  XNAT workflow not authenticated; license to verify.
 dimensions: unknown
 coil_count: unknown
 static_or_dynamic: unknown

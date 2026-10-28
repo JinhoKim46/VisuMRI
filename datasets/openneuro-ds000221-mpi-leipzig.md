@@ -3,7 +3,7 @@
 - **Anatomy:** brain
 - **Formats:** NIfTI
 - **Access:** open
-- **License:** CC0 (from https://raw.githubusercontent.com/OpenNeuroDatasets/ds000221/master/dataset_description.json, field License) (status: stated)
+- **License:** CC0 (status: stated)
 - **Source:** https://github.com/OpenNeuroDatasets/ds000221
 - **Page title (evidence):** GitHub - OpenNeuroDatasets/ds000221 · GitHub
 - **Size:** 318 participants; GB not published on fetched pages

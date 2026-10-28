@@ -2,7 +2,7 @@
 
 - **Anatomy:** knee
 - **Formats:** unknown
-- **Access:** unknown
+- **Access:** gated
 - **License:** [license to verify] (status: license to verify)
 - **Source:** https://stanfordmlgroup.github.io/competitions/mrnet/
 - **Page title (evidence):** MRNet: A Dataset of Knee MRIs and Competition for Automated Knee MRI Interpretation.
@@ -23,8 +23,9 @@ Downloaded from Stanford AIMI site (v1.0); I did not fetch that download page. L
 ```yaml
 inspected: false
 basis: documentation only
-reason: No reproducible individual sample selected in this pass; source retrieved
-  but download workflow remains unverified.
+reason: Provider now links to Stanford Redivis. Its published distribution metadata
+  requiresSubscription=true; no anonymous MRI download was available. Gated; license
+  to verify.
 dimensions: unknown
 coil_count: unknown
 static_or_dynamic: unknown

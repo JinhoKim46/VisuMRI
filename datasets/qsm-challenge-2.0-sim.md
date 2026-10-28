@@ -3,7 +3,7 @@
 - **Anatomy:** QSM
 - **Formats:** NIfTI
 - **Access:** open
-- **License:** Creative Commons Attribution 4.0 International (CC BY 4.0) (status: stated)
+- **License:** cc-by-4.0 (status: stated)
 - **Source:** https://zenodo.org/record/4559541
 - **Page title (evidence):** QSM Reconstruction Challenge 2.0 - Data and Code Provided to Participants | Zenodo
 - **Size:** 1.6 GB total (Stage1.zip 532.3 MB, Stage2.zip 1.0 GB, functions4challenge.zip 448.2 kB)

@@ -3,7 +3,7 @@
 - **Anatomy:** liver
 - **Formats:** DICOM
 - **Access:** open
-- **License:** Creative Commons Attribution Non Commercial Share Alike 4.0 International (CC BY-NC-SA 4.0) (status: stated)
+- **License:** cc-by-nc-sa-4.0 (status: stated)
 - **Source:** https://zenodo.org/records/3431873
 - **Page title (evidence):** CHAOS - Combined (CT-MR) Healthy Abdominal Organ Segmentation Challenge Data (Zenodo); also https://chaos.grand-challenge.org/Data/ 'Data Info - CHAOS - Grand Challenge'
 - **Size:** 2.0 GB total: CHAOS_Train_Sets.zip 890.8 MB, CHAOS_Test_Sets.zip 1.1 GB (both >200 MB). MRI: 20 train + 20 test cases (T1-DUAL, T2-SPIR); also 40 CT cases. Test ground truth never shared.

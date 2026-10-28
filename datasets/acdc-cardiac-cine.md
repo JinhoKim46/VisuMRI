@@ -19,8 +19,9 @@ See the dated sample verification below.
 ```yaml
 inspected: false
 basis: documentation only
-reason: No reproducible individual sample selected in this pass; source retrieved
-  but download workflow remains unverified.
+reason: Source links to Human Heart collection 637218c173e9f0047faa00fb. API lookup
+  returned 404; alternate database endpoint timed out after 30 seconds. No sample
+  URL verified.
 dimensions: unknown
 coil_count: unknown
 static_or_dynamic: unknown
