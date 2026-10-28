@@ -8,8 +8,23 @@
 - **Page title (evidence):** Automated Cardiac Diagnosis Challenge (ACDC)
 - **Size:** 150 exams (5 groups of 30: NOR, MINF, DCM, HCM, RV); byte size not stated
 - **Acquisition parameters:** 1.5 T Siemens Area and 3.0 T Siemens Trio Tim; SSFP cine short-axis, breath-hold; slice 5 mm (sometimes 8 mm); in-plane 1.37-1.68 mm; 28-40 images per cycle; TR/TE/matrix not published
-- **Sample file:** none recorded
+- **Sample file:** none; see reason below
 
 ## Analysis
 
-Not inspected. No sample file was downloaded in this pass, so dimensions, coil count, and static-vs-dynamic are not yet recorded. Re-run `scripts/inspect_dataset.py` on one downloaded file to fill these in.
+See the dated sample verification below.
+
+## Sample verification — 2026-10-28
+
+```yaml
+inspected: false
+basis: documentation only
+reason: No reproducible individual sample selected in this pass; source retrieved
+  but download workflow remains unverified.
+dimensions: unknown
+coil_count: unknown
+static_or_dynamic: unknown
+domain: unknown
+fields_read: []
+source_checked_at: '2026-10-28'
+```

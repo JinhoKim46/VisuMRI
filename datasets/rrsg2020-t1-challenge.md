@@ -8,12 +8,26 @@
 - **Page title (evidence):** Results of the ISMRM 2020 joint Reproducible Research & Quantitative MR study groups reproducibility challenge on phantom and human brain T1 mapping | Zenodo
 - **Size:** 217.1 MB (single zip Dataset_10.55458_NeuroLibre_00014_2654c1.zip) - over 200 MB, not downloaded
 - **Acquisition parameters:** not published on page (page says phantom data only, despite title mentioning human brain)
-- **Sample file:** none recorded
+- **Sample file:** none; see reason below
 
 ## Analysis
 
-Not inspected. No sample file was downloaded in this pass, so dimensions, coil count, and static-vs-dynamic are not yet recorded. Re-run `scripts/inspect_dataset.py` on one downloaded file to fill these in.
+See the dated sample verification below.
 
 ## Notes from discovery
 
 Search snippets suggested OSF osf.io/ywc9g for the full database; OSF page is JS-rendered, could not verify. NIfTI/DICOM unconfirmed.
+
+## Sample verification — 2026-10-28
+
+```yaml
+inspected: false
+basis: documentation only
+reason: Range probe did not return 206
+dimensions: unknown
+coil_count: unknown
+static_or_dynamic: unknown
+domain: unknown
+fields_read: []
+source_checked_at: '2026-10-28'
+```

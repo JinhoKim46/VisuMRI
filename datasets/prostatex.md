@@ -8,12 +8,27 @@
 - **Page title (evidence):** PROSTATEx - The Cancer Imaging Archive (TCIA)
 - **Size:** 16.67 GB total; DICOM images 16.18 GB; Ktrans/lesion/thumbnails 498 MB
 - **Acquisition parameters:** 3T Siemens MAGNETOM Trio and Skyra, no endorectal coil. T2 TSE ~0.5 mm in-plane, 3.6 mm slice; PD + DCE 3D turbo flash ~1.5 mm in-plane, 4 mm slice, 3.5 s temporal; DWI ss-EPI 2 mm in-plane, 3.6 mm slice, b=50/400/800. TR/TE not on page.
-- **Sample file:** none recorded
+- **Sample file:** none; see reason below
 
 ## Analysis
 
-Not inspected. No sample file was downloaded in this pass, so dimensions, coil count, and static-vs-dynamic are not yet recorded. Re-run `scripts/inspect_dataset.py` on one downloaded file to fill these in.
+See the dated sample verification below.
 
 ## Notes from discovery
 
 Download requires TCIA Data Retriever (Aspera for Ktrans). Open, no login on page.
+
+## Sample verification — 2026-10-28
+
+```yaml
+inspected: false
+basis: documentation only
+reason: No reproducible individual sample selected in this pass; source retrieved
+  but download workflow remains unverified.
+dimensions: unknown
+coil_count: unknown
+static_or_dynamic: unknown
+domain: unknown
+fields_read: []
+source_checked_at: '2026-10-28'
+```

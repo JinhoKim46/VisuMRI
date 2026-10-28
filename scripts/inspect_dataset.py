@@ -38,26 +38,29 @@ def inspect_h5(path: Path) -> dict:
 
 
 def inspect_ismrmrd(path: Path) -> dict:
-    import ismrmrd
+    import xml.etree.ElementTree as ET
 
-    info = {"format": "ISMRMRD raw"}
-    with ismrmrd.File(str(path), "r") as f:
-        dsets = f.list()
-        info["groups"] = list(dsets)
-        header = f.read_header()
-        enc = header.encoding[0]
-        info["encoding_matrix"] = [enc.encodedSpace.matrixSize.x,
-                                   enc.encodedSpace.matrixSize.y,
-                                   enc.encodedSpace.matrixSize.z]
-        info["recon_matrix"] = [enc.reconSpace.matrixSize.x,
-                                enc.reconSpace.matrixSize.y,
-                                enc.reconSpace.matrixSize.z]
-        info["field_strength_t"] = header.acquisitionSystemInformation.systemFieldStrength_T
-        info["receiver_channels"] = header.acquisitionSystemInformation.receiverChannels
-        info["domain"] = "k-space"
-        if header.userParameters is not None:
-            info["user_parameters"] = [p.name for p in header.userParameters.userParameterLong] or None
-    return info
+    with h5py.File(path, "r") as f:
+        root = ET.fromstring(f["dataset/xml"][0])
+        ns = {"m": "http://www.ismrm.org/ISMRMRD"}
+        def value(key):
+            node = root.find(".//" + "m:" + key.replace("/", "/m:"), ns)
+            return node.text if node is not None else None
+        matrix = [int(value("encoding/encodedSpace/matrixSize/" + axis)) for axis in "xyz"]
+        phase_max = value("encoding/encodingLimits/phase/maximum")
+        repetition_max = value("encoding/encodingLimits/repetition/maximum")
+        dynamic = any(v is not None and int(v) > 0 for v in (phase_max, repetition_max))
+        return {"format": "ISMRMRD raw", "encoding_matrix": matrix,
+                "coil_count": int(value("acquisitionSystemInformation/receiverChannels")),
+                "acquisitions": f["dataset/data"].shape[0], "domain": "k-space",
+                "static_or_dynamic": "dynamic" if dynamic else "unknown",
+                "phase_maximum": phase_max, "repetition_maximum": repetition_max,
+                "protocol_name": value("measurementInformation/protocolName"),
+                "fields_read": ["dataset/xml: encoding/encodedSpace/matrixSize",
+                                "dataset/xml: acquisitionSystemInformation/receiverChannels",
+                                "dataset/xml: measurementInformation/protocolName", "dataset/data.shape",
+                                "dataset/xml: encoding/encodingLimits/phase/maximum",
+                                "dataset/xml: encoding/encodingLimits/repetition/maximum"]}
 
 
 def inspect_nifti(path: Path) -> dict:
@@ -70,7 +73,9 @@ def inspect_nifti(path: Path) -> dict:
         "shape": shape,
         "voxel_size_mm": [round(float(z), 3) for z in img.header.get_zooms()[:3]],
         "domain": "image",
-        "static_or_dynamic": "dynamic" if len(shape) == 4 and shape[3] > 1 else "static",
+        "static_or_dynamic": "unknown" if len(shape) > 3 else "static",
+        "coil_count": "unknown",
+        "fields_read": ["NIfTI dim", "NIfTI pixdim"],
     }
     if len(shape) == 4 and shape[3] > 1:
         info["time_points"] = shape[3]
@@ -118,11 +123,10 @@ def inspect(path: Path) -> dict:
         return inspect_nifti(path)
     if name.endswith((".mha", ".mhd")):
         return inspect_mha(path)
-    if name.endswith((".h5", ".hdf5", ".mat")):
-        try:
-            return inspect_ismrmrd(path)
-        except Exception:
-            return inspect_h5(path)
+    if name.endswith((".h5", ".hdf5", ".mat", ".mrd")):
+        with h5py.File(path, "r") as f:
+            raw = "dataset/xml" in f and "dataset/data" in f
+        return inspect_ismrmrd(path) if raw else inspect_h5(path)
     raise SystemExit(f"unsupported file type: {path.name}")
 
 

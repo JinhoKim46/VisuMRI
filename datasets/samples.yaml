@@ -1,0 +1,186 @@
+samples:
+- id: m4raw-brain
+  url: https://zenodo.org/records/8056074/files/M4RawV1.5_multicoil_val.zip?download=1
+  archive_size: 2980446721
+  size: null
+  sha256: null
+  reason: Range probe did not return 206
+- id: chaos-liver-mri-dicom
+  url: https://zenodo.org/records/3431873/files/CHAOS_Train_Sets.zip?download=1
+  archive_size: 890771694
+  size: null
+  sha256: null
+  reason: Range probe did not return 206
+- id: liverhccseg-multiphase-mri
+  url: https://zenodo.org/records/8179129/files/nifti_and_segms.zip?download=1
+  archive_size: 977885191
+  size: null
+  sha256: null
+  reason: Range probe did not return 206
+- id: amos22-abdominal-mri
+  url: https://zenodo.org/records/7155725/files/amos22.zip?download=1
+  archive_size: 24234336519
+  size: null
+  sha256: null
+  reason: Range probe did not return 206
+- id: qsm-challenge-2.0-sim
+  url: https://zenodo.org/records/4559541/files/Stage1.zip?download=1
+  archive_size: 532312854
+  size: null
+  sha256: null
+  reason: Range probe did not return 206
+- id: qsm-consensus-example-data
+  url: https://zenodo.org/records/7795492/files/QSM_Consensus_Paper_Example_DICOM_Code_v0.2.1.zip?download=1
+  archive_size: 1012840641
+  size: null
+  sha256: null
+  reason: Range probe did not return 206
+- id: topcow-zenodo-mra-lausanne
+  url: https://zenodo.org/records/15692630/files/MRA_Lausanne.zip?download=1
+  archive_size: 1338108068
+  size: null
+  sha256: null
+  reason: Range probe did not return 206
+- id: rrsg2020-t1-challenge
+  url: https://zenodo.org/records/8419809/files/Dataset_10.55458_NeuroLibre_00014_2654c1.zip?download=1
+  archive_size: 217142333
+  size: null
+  sha256: null
+  reason: Range probe did not return 206
+- id: free-breathing-liver-grpe-ismrmrd
+  url: https://zenodo.org/records/20758499/files/grpe_t1_free_breathing.mrd?download=1
+  archive_size: 104744816
+  size: 104744816
+  sha256: fd3a0cb3e43c9d9d32dd1464530c9d0ea6583b43293146fa636551a7d053da4d
+  filename: grpe_t1_free_breathing.mrd
+- id: ixi-mra
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: topcow-mra-ct
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: prostatex
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: picai-public
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: fastmri-prostate
+  url: null
+  size: null
+  sha256: null
+  reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
+- id: msd-prostate
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: fastmri-knee
+  url: null
+  size: null
+  sha256: null
+  reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
+- id: skm-tea-knee
+  url: null
+  size: null
+  sha256: null
+  reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
+- id: mridata-stanford-fse-knee-hf-mirror
+  url: null
+  size: null
+  sha256: null
+  reason: Public API lists individual HDF5 files of 3,565,160,448 bytes; download
+    deferred because these are multi-GB samples. Mirror license read as cc-by-nc-4.0;
+    original license unverified.
+- id: mrnet-knee
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: fastmri-brain
+  url: null
+  size: null
+  sha256: null
+  reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
+- id: ixi-brain
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: calgary-campinas-brain
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: openneuro-ds000221-mpi-leipzig
+  url: https://s3.amazonaws.com/openneuro.org/ds000221/sub-010001/ses-02/anat/sub-010001_ses-02_acq-lowres_FLAIR.nii.gz
+  size: 4421670
+  sha256: f08e09bd8713de0b4a7dfc13449bf286e2783ab029723687c29f49af9561b52f
+  filename: sub-010001_ses-02_acq-lowres_FLAIR.nii.gz
+- id: ocmr-cardiac-cine
+  url: https://ocmr.s3.amazonaws.com/data/fs_0001_1_5T.h5
+  size: 194153168
+  sha256: b2dd7cfd5bc0a75f08ac61c84a108d416b40695168dac803a2731a786cdd6a65
+  filename: fs_0001_1_5T.h5
+- id: cmrxrecon-2023-cardiac-kspace
+  url: null
+  size: null
+  sha256: null
+  reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
+- id: sunnybrook-cardiac-dicom
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: acdc-cardiac-cine
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: cmrxrecon-t1-mapping
+  url: null
+  size: null
+  sha256: null
+  reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
+- id: zenodo-sms-t1-radial-flash
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: zenodo-radial-flash-cardiac-t1
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: mpg-7t-trt-mp2rage
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
+- id: qsm-challenge-2016
+  url: null
+  size: null
+  sha256: null
+  reason: No reproducible individual sample selected in this pass; source retrieved
+    but download workflow remains unverified.
