@@ -1,0 +1,19 @@
+# prostatex
+
+- **Anatomy:** prostate
+- **Formats:** DICOM, MHD/ZRAW
+- **Access:** open
+- **License:** CC BY 3.0. Data Citation Required: Users must abide by the TCIA Data Usage Policy and Restrictions. (status: stated)
+- **Source:** https://www.cancerimagingarchive.net/collection/prostatex/
+- **Page title (evidence):** PROSTATEx - The Cancer Imaging Archive (TCIA)
+- **Size:** 16.67 GB total; DICOM images 16.18 GB; Ktrans/lesion/thumbnails 498 MB
+- **Acquisition parameters:** 3T Siemens MAGNETOM Trio and Skyra, no endorectal coil. T2 TSE ~0.5 mm in-plane, 3.6 mm slice; PD + DCE 3D turbo flash ~1.5 mm in-plane, 4 mm slice, 3.5 s temporal; DWI ss-EPI 2 mm in-plane, 3.6 mm slice, b=50/400/800. TR/TE not on page.
+- **Sample file:** none recorded
+
+## Analysis
+
+Not inspected. No sample file was downloaded in this pass, so dimensions, coil count, and static-vs-dynamic are not yet recorded. Re-run `scripts/inspect_dataset.py` on one downloaded file to fill these in.
+
+## Notes from discovery
+
+Download requires TCIA Data Retriever (Aspera for Ktrans). Open, no login on page.
