@@ -12,7 +12,16 @@
 
 ## Analysis
 
-See the dated sample verification below.
+Inspected from one sample file: `data/raw/zenodo-radial-flash-cardiac-t1/volunteer.tgz` (header only).
+
+- **Format:** BART cfl/hdr in TAR
+- **Dimensions:** [256, 218, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+- **Coils:** unknown
+- **Static or dynamic:** unknown
+- **Domain:** unknown
+- **Fields read:** BART # Dimensions, TAR member names and sizes
+
+**Note:** BART cfl/hdr archive. The inspector reads the first non-ROI header (256 x 218 in the first dimensions); the archive holds many MOLLI scans and ROI masks, so this records one entry, not the full series.
 
 ## Sample verification — 2026-10-28
 

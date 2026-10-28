@@ -12,7 +12,16 @@
 
 ## Analysis
 
-See the dated sample verification below.
+Inspected from one sample file: `data/raw/msd-prostate/prostate_16.nii.gz` (header only).
+
+- **Format:** NIfTI
+- **Dimensions:** [320, 320, 20, 2]
+- **Coils:** unknown
+- **Static or dynamic:** unknown
+- **Domain:** image
+- **Fields read:** NIfTI dim, NIfTI pixdim
+
+**Note:** The 4th dimension has length 2 and is not time; for MSD Task05 it is expected to be two MRI channels (T2 and ADC). Not confirmed from the file header alone; check the MSD dataset description.
 
 ## Notes from discovery
 

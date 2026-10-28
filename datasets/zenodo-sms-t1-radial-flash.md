@@ -12,7 +12,16 @@
 
 ## Analysis
 
-See the dated sample verification below.
+Inspected from one sample file: `data/raw/zenodo-sms-t1-radial-flash/brain-inter5.tgz` (header only).
+
+- **Format:** BART cfl/hdr in TAR
+- **Dimensions:** [512, 1, 1, 16, 1, 1, 1, 1, 1, 1, 210, 1, 1, 1, 1, 1]
+- **Coils:** unknown
+- **Static or dynamic:** unknown
+- **Domain:** unknown
+- **Fields read:** BART # Dimensions, TAR member names and sizes
+
+**Note:** BART cfl/hdr, not a target format. Domain is not stated in the BART header; dimension 10 (210) is taken as the time/inversion axis, which the BART convention suggests. Not verified against the source paper.
 
 ## Notes from discovery
 

@@ -12,7 +12,16 @@
 
 ## Analysis
 
-See the dated sample verification below.
+Inspected from one sample file: `data/raw/free-breathing-liver-grpe-ismrmrd/grpe_t1_free_breathing.mrd` (header only).
+
+- **Format:** ISMRMRD raw
+- **Dimensions:** [154, 154, 154]
+- **Coils:** 6
+- **Static or dynamic:** unknown
+- **Domain:** k-space
+- **Fields read:** dataset/xml: encoding/encodedSpace/matrixSize, dataset/xml: acquisitionSystemInformation/receiverChannels, dataset/xml: measurementInformation/protocolName, dataset/data.shape, dataset/xml: encoding/encodingLimits/phase/maximum, dataset/xml: encoding/encodingLimits/repetition/maximum
+
+**Note:** Protocol name is 'Test_short_libbalanceCheckOn_phantom': this is a phantom test scan, not a human liver. The k-space header is valid ISMRMRD.
 
 ## Sample verification — 2026-10-28
 

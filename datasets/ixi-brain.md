@@ -12,7 +12,16 @@
 
 ## Analysis
 
-See the dated sample verification below.
+Inspected from one sample file: `data/raw/ixi-brain/IXI002-Guys-0828-T1.nii.gz` (header only).
+
+- **Format:** NIfTI
+- **Dimensions:** [256, 256, 150]
+- **Coils:** unknown
+- **Static or dynamic:** static
+- **Domain:** image
+- **Fields read:** NIfTI dim, NIfTI pixdim
+
+**Note:** T1-weighted volume from IXI (Guys site). Header only; coils not stated in NIfTI.
 
 ## Sample verification — 2026-10-28
 

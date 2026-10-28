@@ -146,11 +146,10 @@ samples:
   sha256: null
   reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
 - id: sunnybrook-cardiac-dicom
-  url: https://www.cardiacatlas.org/share/download.php?id=102&token=nYALJl6kS6cj5jgK9R8CKDpgQwZn1pm3
+  url: null
   size: null
   sha256: null
-  reason: 'Range HEAD probe: HTTP/1.1 200 OK, Content-Type: text/html; charset=UTF-8.
-    No ZIP downloaded because HTTP 206 was not returned.'
+  reason: 'Source download link contained a share token; the token was removed from this manifest. Fetch a fresh link from cardiacatlas.org before retrying.'
 - id: acdc-cardiac-cine
   url: null
   size: null

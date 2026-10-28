@@ -12,7 +12,16 @@
 
 ## Analysis
 
-See the dated sample verification below.
+Inspected from one sample file: `data/raw/openneuro-ds000221-mpi-leipzig/sub-010001_ses-02_acq-lowres_FLAIR.nii.gz` (header only).
+
+- **Format:** NIfTI
+- **Dimensions:** [384, 512, 28]
+- **Coils:** unknown
+- **Static or dynamic:** static
+- **Domain:** image
+- **Fields read:** NIfTI dim, NIfTI pixdim
+
+**Note:** Low-resolution FLAIR image from OpenNeuro ds000221, one subject and session.
 
 ## Sample verification — 2026-10-28
 

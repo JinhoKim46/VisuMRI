@@ -109,6 +109,15 @@ def inspect_dicom(path: Path) -> dict:
     return info
 
 
+def inspect_matlab_v5(path: Path) -> dict:
+    from scipy.io import whosmat
+
+    variables = {name: {"shape": list(shape), "dtype": dtype} for name, shape, dtype in whosmat(str(path))}
+    return {"format": "MATLAB v5", "variables": variables, "coil_count": "unknown",
+            "static_or_dynamic": "unknown", "domain": "unknown",
+            "fields_read": ["MATLAB v5 variable headers (scipy.io.whosmat)"]}
+
+
 def inspect_mha(path: Path) -> dict:
     info = {"format": "MetaImage"}
     for line in path.read_text(errors="ignore").splitlines()[:30]:
@@ -157,6 +166,8 @@ def inspect(path: Path) -> dict:
         return inspect_nifti(path)
     if name.endswith((".mha", ".mhd")):
         return inspect_mha(path)
+    if name.endswith(".mat") and not h5py.is_hdf5(path):
+        return inspect_matlab_v5(path)
     if name.endswith((".h5", ".hdf5", ".mat", ".mrd")):
         with h5py.File(path, "r") as f:
             raw = "dataset/xml" in f and "dataset/data" in f

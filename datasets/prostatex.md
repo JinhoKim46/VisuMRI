@@ -12,7 +12,16 @@
 
 ## Analysis
 
-See the dated sample verification below.
+Inspected from one sample file: `data/raw/prostatex/00000001.dcm` (header only).
+
+- **Format:** DICOM
+- **Dimensions:** [128, 84]
+- **Coils:** unknown
+- **Static or dynamic:** unknown
+- **Domain:** image
+- **Fields read:** Rows, Columns, Modality, SeriesDescription, SequenceName, MagneticFieldStrength
+
+**Note:** One slice from a DWI (diffusion) series, not a T2 series. The sample alone does not show the full ProstateX protocol.
 
 ## Notes from discovery
 

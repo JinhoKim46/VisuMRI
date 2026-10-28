@@ -12,7 +12,16 @@
 
 ## Analysis
 
-See the dated sample verification below.
+Inspected from one sample file: `data/raw/qsm-challenge-2016/chi_cosmos.nii.gz` (header only).
+
+- **Format:** NIfTI
+- **Dimensions:** [160, 160, 160]
+- **Coils:** unknown
+- **Static or dynamic:** static
+- **Domain:** image
+- **Fields read:** NIfTI dim, NIfTI pixdim
+
+**Note:** This is the reference susceptibility map (COSMOS), an image. It is not raw phase or magnitude data, so it cannot test the QSM reconstruction input.
 
 ## Notes from discovery
 

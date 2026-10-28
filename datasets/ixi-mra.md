@@ -12,7 +12,16 @@
 
 ## Analysis
 
-See the dated sample verification below.
+Inspected from one sample file: `data/raw/ixi-mra/IXI002-Guys-0828-MRA.nii.gz` (header only).
+
+- **Format:** NIfTI
+- **Dimensions:** [512, 512, 100]
+- **Coils:** unknown
+- **Static or dynamic:** static
+- **Domain:** image
+- **Fields read:** NIfTI dim, NIfTI pixdim
+
+**Note:** MRA volume from IXI (Guys site), an image, not raw data. Header only.
 
 ## Notes from discovery
 

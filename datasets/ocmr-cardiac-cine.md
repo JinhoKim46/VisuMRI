@@ -12,7 +12,16 @@
 
 ## Analysis
 
-See the dated sample verification below.
+Inspected from one sample file: `data/raw/ocmr-cardiac-cine/fs_0001_1_5T.h5` (header only).
+
+- **Format:** ISMRMRD raw
+- **Dimensions:** [512, 208, 1]
+- **Coils:** 15
+- **Static or dynamic:** dynamic
+- **Domain:** k-space
+- **Fields read:** dataset/xml: encoding/encodedSpace/matrixSize, dataset/xml: acquisitionSystemInformation/receiverChannels, dataset/xml: measurementInformation/protocolName, dataset/data.shape, dataset/xml: encoding/encodingLimits/phase/maximum, dataset/xml: encoding/encodingLimits/repetition/maximum
+
+**Note:** Dynamic is inferred from the ISMRMRD phase-encoding maximum (18). That index is taken to be the cardiac phase; the cine loop is not checked against the image.
 
 ## Sample verification — 2026-10-28
 
