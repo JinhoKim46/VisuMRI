@@ -1,0 +1,1048 @@
+datasets:
+- id: ixi-mra
+  anatomy:
+  - angiography
+  formats:
+  - NIfTI
+  source_url: https://brain-development.org/ixi-dataset/
+  sample_file_url: https://biomedic.doc.ic.ac.uk/brain-development/downloads/IXI/IXI-MRA.tar
+  page_title: IXI Dataset – Brain Development
+  license_text: This data is made available under the Creative Commons CC BY-SA 3.0 license
+  license_status: stated
+  size_text: not published on page (IXI-MRA.tar; a 517.3 MB IXI-HH MRA subset appears in the TopCoW zenodo record
+    15692630)
+  acquisition_params: 'Page does not give MRA TR/TE/matrix. Sites: Hammersmith Philips 3T, Guy''s Philips 1.5T,
+    IoP GE 1.5T (page does not say which sites contributed MRA)'
+  access: open
+  analysis:
+    format: NIfTI
+    shape: &id001
+    - 512
+    - 512
+    - 100
+    voxel_size_mm:
+    - 0.469
+    - 0.469
+    - 0.8
+    domain: image
+    static_or_dynamic: static
+    coil_count: unknown
+    fields_read:
+    - NIfTI dim
+    - NIfTI pixdim
+    inspected: true
+    basis: file header
+    sample_path: data/raw/ixi-mra/IXI002-Guys-0828-MRA.nii.gz
+    source_checked_at: '2026-10-28'
+    dimensions: *id001
+  notes_path: datasets/ixi-mra.md
+  license_verified_at: '2026-10-28'
+- id: topcow-mra-ct
+  anatomy:
+  - angiography
+  formats:
+  - NIfTI
+  source_url: https://topcow23.grand-challenge.org/data/
+  sample_file_url: null
+  page_title: Data - Topology-Aware Anatomical Segmentation of the Circle of Willis - Grand Challenge
+  license_text: 'CC BY-NC (Attribution-NonCommercial). By downloading the data you agree with the license terms.
+    (CROWN subset: its own data usage agreement.)'
+  license_status: license to verify
+  size_text: 'not published on this page (patient counts only: 90 train, 5 val, 35 test, plus 20 CROWN MRAs). Zenodo
+    record 15692630 lists 14.4 GB total; TopCoW2024_Data_Release.zip 10.5 GB'
+  acquisition_params: 'MRA: Siemens Skyra or Avanto Fit, 3T or 1.5T, TOF-3D or TOF-3D multi-slab; in-plane ~0.29-0.35
+    mm, slice ~0.5-0.6 mm. Paired CTA also included.'
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: 'Range HEAD probe: HTTP/1.1 200 OK, content-type: application/octet-stream, content-length: 10512833650.
+      No ZIP downloaded because HTTP 206 was not returned.'
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/topcow-mra-ct.md
+- id: topcow-zenodo-mra-lausanne
+  anatomy:
+  - angiography
+  formats:
+  - NIfTI
+  source_url: https://zenodo.org/records/15692630
+  sample_file_url: null
+  page_title: TopCoW Training Data and External Testsets | Zenodo
+  license_text: CC0 “No Rights Reserved” (listed as original license for MRA_Lausanne.zip)
+  license_status: stated
+  size_text: MRA_Lausanne.zip 1.3 GB (record total 14.4 GB)
+  acquisition_params: not published
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: Range probe did not return 206
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/topcow-zenodo-mra-lausanne.md
+  license_verified_at: '2026-10-28'
+- id: prostatex
+  anatomy:
+  - prostate
+  formats:
+  - DICOM
+  - MHD/ZRAW
+  source_url: https://www.cancerimagingarchive.net/collection/prostatex/
+  sample_file_url: https://services.cancerimagingarchive.net/nbia-api/services/v1/getImage?SeriesInstanceUID=1.3.6.1.4.1.14519.5.2.1.7311.5101.188977771136360163301482606296
+  page_title: PROSTATEx - The Cancer Imaging Archive (TCIA)
+  license_text: 'CC BY 3.0. Data Citation Required: Users must abide by the TCIA Data Usage Policy and Restrictions.'
+  license_status: stated
+  size_text: 16.67 GB total; DICOM images 16.18 GB; Ktrans/lesion/thumbnails 498 MB
+  acquisition_params: 3T Siemens MAGNETOM Trio and Skyra, no endorectal coil. T2 TSE ~0.5 mm in-plane, 3.6 mm slice;
+    PD + DCE 3D turbo flash ~1.5 mm in-plane, 4 mm slice, 3.5 s temporal; DWI ss-EPI 2 mm in-plane, 3.6 mm slice,
+    b=50/400/800. TR/TE not on page.
+  access: open
+  analysis:
+    format: DICOM
+    dimensions:
+    - 128
+    - 84
+    coil_count: unknown
+    static_or_dynamic: unknown
+    fields_read:
+    - Rows
+    - Columns
+    - Modality
+    - SeriesDescription
+    - SequenceName
+    - MagneticFieldStrength
+    file_count: 1
+    modality: MR
+    series_description: ep2d_diff_tra_DYNDIST_MIXCALC_BVAL
+    sequence_name: '*ep_b50_800'
+    field_strength_t: 3.0
+    domain: image
+    inspected: true
+    basis: file header
+    sample_path: data/raw/prostatex/00000001.dcm
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/prostatex.md
+  license_verified_at: '2026-10-28'
+- id: picai-public
+  anatomy:
+  - prostate
+  formats:
+  - MHA
+  source_url: https://pi-cai.grand-challenge.org/DATA/
+  sample_file_url: null
+  page_title: 'Datasets: Imaging, Labels - The PI-CAI Challenge'
+  license_text: 'non-commercial CC BY-NC 4.0 license (Zenodo: ''Creative Commons Attribution Non Commercial 4.0
+    International'')'
+  license_status: stated
+  size_text: '1,500 public cases; Zenodo https://zenodo.org/records/6624726 (title ''The PI-CAI Challenge: Public
+    Training and Development Dataset | Zenodo'') total 26.9 GB in 5 folds of ~5.2-5.6 GB'
+  acquisition_params: Siemens or Philips, surface coils; axial/sagittal/coronal T2W, axial DWI (high b >=1000),
+    ADC; no DCE in public set. Field strength, TR/TE not on page.
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: 'Range HEAD probe: HTTP/1.1 200 OK, content-type: application/octet-stream, content-length: 5368893021.
+      No ZIP downloaded because HTTP 206 was not returned.'
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/picai-public.md
+  license_verified_at: '2026-10-28'
+- id: fastmri-prostate
+  anatomy:
+  - prostate
+  formats:
+  - ISMRMRD
+  - HDF5
+  - DICOM
+  source_url: https://fastmri.med.nyu.edu/
+  sample_file_url: null
+  page_title: 'fastMRI Dataset (heading: Welcome to the fastMRI Dataset); also NYU Data Catalog ''fastMRI'' https://datacatalog.med.nyu.edu/dataset/10389'
+  license_text: No separate license named. 'Each dataset has its own Data Sharing Agreement.' 'NYU fastMRI data
+    may be used for internal research or educational purposes only'
+  license_status: license to verify
+  size_text: not published (312 exams)
+  acquisition_params: 3T; axial T2W and axial DWI per exam. Coils/TR/TE/matrix not on fetched pages (Scientific
+    Data paper 10.1038/s41597-024-03252-w could not be fetched, paywall redirect).
+  access: gated
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/fastmri-prostate.md
+- id: msd-prostate
+  anatomy:
+  - prostate
+  formats:
+  - NIfTI
+  source_url: https://registry.opendata.aws/msd/
+  sample_file_url: https://msd-for-monai.s3.amazonaws.com/Task05_Prostate.tar
+  page_title: Medical Segmentation Decathlon - Registry of Open Data on AWS
+  license_text: AWS registry label says CC-BY-SA 4.0 International but links to CC BY 4.0; conflicting source evidence,
+    license to verify.
+  license_status: license to verify
+  size_text: not published for the prostate task on this page (tasks as tar.gz and uncompressed; s3://msd-for-monai,
+    s3://msd-for-monai-eu)
+  acquisition_params: not published on fetched page (medicaldecathlon.com could not be fetched)
+  access: open
+  analysis:
+    format: NIfTI
+    shape: &id002
+    - 320
+    - 320
+    - 20
+    - 2
+    voxel_size_mm:
+    - 0.625
+    - 0.625
+    - 3.6
+    domain: image
+    static_or_dynamic: unknown
+    coil_count: unknown
+    fields_read:
+    - NIfTI dim
+    - NIfTI pixdim
+    fourth_dimension_size: 2
+    inspected: true
+    basis: file header
+    sample_path: data/raw/msd-prostate/prostate_16.nii.gz
+    source_checked_at: '2026-10-28'
+    dimensions: *id002
+    caveat: Fourth dimension length 2 is not proof of time points; temporal semantics unknown from header.
+  notes_path: datasets/msd-prostate.md
+- id: fastmri-knee
+  anatomy:
+  - knee
+  formats:
+  - ISMRMRD
+  - HDF5
+  - DICOM
+  source_url: https://fastmri.med.nyu.edu/
+  sample_file_url: null
+  page_title: fastMRI Dataset
+  license_text: NYU fastMRI data may be used for internal research or educational purposes only as described in
+    the data use agreement
+  license_status: license to verify
+  size_text: '1,500+ fully sampled raw knee MRIs (Table 1: 1,398 = 697 PD + 701 PD-FS); DICOM from 10,000 clinical
+    knee MRIs; total GB not published on page'
+  acquisition_params: 3T and 1.5T; coronal PD with/without fat suppression (raw); DICOM adds axial PD-FS, sagittal
+    PD, sagittal T2-FS; TR/TE not published on page
+  access: gated
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/fastmri-knee.md
+- id: skm-tea-knee
+  anatomy:
+  - knee
+  formats:
+  - HDF5
+  - DICOM
+  - NIfTI
+  source_url: https://aimi.stanford.edu/datasets/skm-tea-knee-mri
+  sample_file_url: null
+  page_title: SKM-TEA Knee MRI | Center for Artificial Intelligence in Medicine & Imaging
+  license_text: '[license to verify]'
+  license_status: license to verify
+  size_text: 155 qDESS knee scans (86 train/33 val/36 test); ~900GB compressed, 1.6TB expanded (per github DATASET.md
+    https://github.com/StanfordMIMI/skm-tea/blob/main/DATASET.md)
+  acquisition_params: qDESS 3D; 2x1 parallel imaging, elliptical sampling, ARC-completed; 8 or 15/16 coils; example
+    matrix [512,512,160], voxel 0.3125x0.3125x0.8 mm (example values); TR/TE and field strength not published on
+    fetched pages
+  access: gated
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/skm-tea-knee.md
+- id: mridata-stanford-fse-knee-hf-mirror
+  anatomy:
+  - knee
+  formats:
+  - HDF5
+  source_url: https://huggingface.co/datasets/arjundd/mridata-stanford-knee-3d-fse
+  sample_file_url: null
+  page_title: arjundd/mridata-stanford-knee-3d-fse · Datasets at Hugging Face
+  license_text: cc-by-nc-4.0
+  license_status: license to verify
+  size_text: 67.7 GB total, 3 files (train/val/test, 1 row each, per HF viewer)
+  acquisition_params: 'From search results of papers (not fetched from the primary page): 3T GE, 8-channel coil,
+    320x320 matrix, TR 1550 ms / TE 25 ms, 3D FSE. Primary page: not published on fetched page'
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: 'Public HDF5 download timed out after 300 seconds: 1,238,820,537 of 3,565,160,448 bytes received. Incomplete
+      file removed; no header inspection attempted. Mirror license CC BY-NC 4.0; original mridata.org license unverified.'
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/mridata-stanford-fse-knee-hf-mirror.md
+  license_verified_at: '2026-10-28'
+- id: mrnet-knee
+  anatomy:
+  - knee
+  formats:
+  - unknown
+  source_url: https://stanfordmlgroup.github.io/competitions/mrnet/
+  sample_file_url: null
+  page_title: 'MRNet: A Dataset of Knee MRIs and Competition for Automated Knee MRI Interpretation.'
+  license_text: '[license to verify]'
+  license_status: license to verify
+  size_text: 1,370 knee MRI exams (1,130 train, 120 val, 120 hidden test); GB not published on page
+  acquisition_params: GE scanners, 775 exams at 3.0T, rest 1.5T; coronal T1, coronal T2-FS, sagittal PD, sagittal
+    T2-FS, axial PD-FS; TR/TE not published
+  access: gated
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: Provider now links to Stanford Redivis. Its published distribution metadata requiresSubscription=true;
+      no anonymous MRI download was available. Gated; license to verify.
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/mrnet-knee.md
+- id: fastmri-brain
+  anatomy:
+  - brain
+  formats:
+  - HDF5
+  source_url: https://fastmri.med.nyu.edu/
+  sample_file_url: null
+  page_title: fastMRI Dataset
+  license_text: NYU fastMRI data may be used for internal research or educational purposes only as described in
+    the data use agreement
+  license_status: license to verify
+  size_text: '6,970 fully sampled brain MRIs per text (Table 2 totals 7,002: 3,012 at 1.5T, 3,990 at 3T); GB not
+    published'
+  acquisition_params: axial T1 (some post-contrast), T2, FLAIR; 1.5T and 3T; TR/TE not published on page
+  access: gated
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/fastmri-brain.md
+- id: m4raw-brain
+  anatomy:
+  - brain
+  formats:
+  - HDF5
+  source_url: https://zenodo.org/records/8056074
+  sample_file_url: null
+  page_title: 'M4Raw: A multi-contrast, multi-repetition, multi-channel MRI k-space dataset for low-field MRI research
+    [V1.6] | Zenodo'
+  license_text: cc-by-4.0
+  license_status: stated
+  size_text: '27.9 GB total (zips: test 5.0, GRE 4.8, motion 2.5, train 12.7, val 3.0 GB)'
+  acquisition_params: 0.3 T whole-body scanner (per https://github.com/mylyu/M4Raw); T1w, T2w, FLAIR (+GRE in V1.5);
+    in-plane ~1.2 mm, through-plane 5 mm; 183 volunteers; coils/TR/TE not published on Zenodo page
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: Range probe did not return 206
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/m4raw-brain.md
+  license_verified_at: '2026-10-28'
+  license_evidence: https://zenodo.org/records/8056074 (record metadata.license)
+- id: ixi-brain
+  anatomy:
+  - brain
+  formats:
+  - NIfTI
+  source_url: https://brain-development.org/ixi-dataset/
+  sample_file_url: https://biomedic.doc.ic.ac.uk/brain-development/downloads/IXI/IXI-T1.tar
+  page_title: IXI Dataset – Brain Development
+  license_text: This data is made available under the Creative Commons CC BY-SA 3.0 license.
+  license_status: stated
+  size_text: Nearly 600 MR images from normal healthy subjects (GB not published on fetched page)
+  acquisition_params: T1, T2, PD, MRA, DWI (15 directions); Hammersmith Philips 3T, Guy's Philips 1.5T, IOP GE 1.5T;
+    TR/TE not listed on this page (linked scanner pages not fetched)
+  access: open
+  analysis:
+    format: NIfTI
+    shape: &id003
+    - 256
+    - 256
+    - 150
+    voxel_size_mm:
+    - 0.938
+    - 0.938
+    - 1.2
+    domain: image
+    static_or_dynamic: static
+    coil_count: unknown
+    fields_read:
+    - NIfTI dim
+    - NIfTI pixdim
+    inspected: true
+    basis: file header
+    sample_path: data/raw/ixi-brain/IXI002-Guys-0828-T1.nii.gz
+    source_checked_at: '2026-10-28'
+    dimensions: *id003
+  notes_path: datasets/ixi-brain.md
+  license_verified_at: '2026-10-28'
+- id: calgary-campinas-brain
+  anatomy:
+  - brain
+  formats:
+  - NIfTI
+  source_url: https://sites.google.com/view/calgary-campinas-dataset/download
+  sample_file_url: null
+  page_title: Calgary-Campinas Public Dataset - Download
+  license_text: Distributed under the Creative Commons Attribution-NoDerivatives 4.0 International Public License.
+  license_status: stated
+  size_text: 359 original volumes; single-channel ~8 GB uncompressed; multi-channel ~219 GB uncompressed
+  acquisition_params: GE Discovery MR750 3T; 3D T1 GRE, 1 mm isotropic sagittal; 12-channel (117 scans) or 32-channel
+    (50); TR/TE/TI 6.3/2.6/650 or 7.4/3.1/400 ms; 170-180 slices; FOV 256x218 mm; 85% partial Fourier in slice direction
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: Source routes downloads through CONP or a request form; no direct anonymous sample URL was verified.
+      No form submitted.
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/calgary-campinas-brain.md
+  license_verified_at: '2026-10-28'
+- id: openneuro-ds000221-mpi-leipzig
+  anatomy:
+  - brain
+  formats:
+  - NIfTI
+  source_url: https://github.com/OpenNeuroDatasets/ds000221
+  sample_file_url: https://s3.amazonaws.com/openneuro.org/ds000221/sub-010001/ses-02/anat/sub-010001_ses-02_acq-lowres_FLAIR.nii.gz
+  page_title: GitHub - OpenNeuroDatasets/ds000221 · GitHub
+  license_text: CC0
+  license_status: stated
+  size_text: 318 participants; GB not published on fetched pages
+  acquisition_params: 'not published on fetched pages (legacy openfmri search snippet: Siemens Verio 3T, not fetched);
+    modalities T1w, T2w, FLAIR, T1map, dwi, bold, fieldmap'
+  access: open
+  analysis:
+    format: NIfTI
+    shape: &id004
+    - 384
+    - 512
+    - 28
+    voxel_size_mm:
+    - 0.43
+    - 0.43
+    - 5.0
+    domain: image
+    static_or_dynamic: static
+    coil_count: unknown
+    fields_read:
+    - NIfTI dim
+    - NIfTI pixdim
+    inspected: true
+    basis: file header
+    sample_path: data/raw/openneuro-ds000221-mpi-leipzig/sub-010001_ses-02_acq-lowres_FLAIR.nii.gz
+    source_checked_at: '2026-10-28'
+    dimensions: *id004
+  notes_path: datasets/openneuro-ds000221-mpi-leipzig.md
+  license_verified_at: '2026-10-28'
+  license_evidence: https://s3.amazonaws.com/openneuro.org/ds000221/dataset_description.json (License)
+- id: ocmr-cardiac-cine
+  anatomy:
+  - cardiac
+  formats:
+  - ISMRMRD
+  - HDF5
+  source_url: https://ocmr.info/instructions/
+  sample_file_url: https://ocmr.s3.amazonaws.com/data/fs_0001_1_5T.h5
+  page_title: Downloading Instructions | OCMR (also fetched https://ocmr.info/ 'OCMR-Open-Access Multi-Coil k-Space
+    Dataset for Cardiovascular Magnetic Resonance Imaging' and https://ocmr.info/download/ 'Terms and Conditions
+    | OCMR')
+  license_text: 'No named license. Terms and Conditions page: ''I will utilize this dataset only for research and
+    educational purposes.'' ''I will neither sell this dataset or its components nor monetize from it.'' ''I acknowledge
+    that all datasets derived from the OCMR dataset are also subject to these terms and conditions.'' Must cite
+    https://arxiv.org/abs/2008.03410'
+  license_status: license to verify
+  size_text: 'Home page (as of Aug 11 2023): fully sampled 165 files/279 slices; prospectively undersampled 212
+    files/842 slices. Full tarball size not stated (''large''): https://ocmr.s3.amazonaws.com/data/ocmr_cine.tar.gz
+    (do NOT download; subset download via https://github.com/MRIOSU/OCMR)'
+  acquisition_params: 'not published on fetched pages (only: some fully sampled data from 0.55T Free.Max; params
+    struct has FOV, TRes, flipAngle_deg, sequence_type; kData dims kx,ky,kz,coil,phase,set,slice,rep,avg)'
+  access: open
+  analysis:
+    format: ISMRMRD raw
+    encoding_matrix: &id005
+    - 512
+    - 208
+    - 1
+    coil_count: 15
+    acquisitions: 3952
+    domain: k-space
+    static_or_dynamic: dynamic
+    phase_maximum: '18'
+    repetition_maximum: '0'
+    protocol_name: trufi_cine_4ch_prop_trigger
+    fields_read:
+    - 'dataset/xml: encoding/encodedSpace/matrixSize'
+    - 'dataset/xml: acquisitionSystemInformation/receiverChannels'
+    - 'dataset/xml: measurementInformation/protocolName'
+    - dataset/data.shape
+    - 'dataset/xml: encoding/encodingLimits/phase/maximum'
+    - 'dataset/xml: encoding/encodingLimits/repetition/maximum'
+    inspected: true
+    basis: file header
+    sample_path: data/raw/ocmr-cardiac-cine/fs_0001_1_5T.h5
+    source_checked_at: '2026-10-28'
+    dimensions: *id005
+  notes_path: datasets/ocmr-cardiac-cine.md
+- id: cmrxrecon-2023-cardiac-kspace
+  anatomy:
+  - cardiac
+  formats:
+  - MATLAB .mat
+  source_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11199635/
+  sample_file_url: null
+  page_title: 'CMRxRecon: A publicly available k-space dataset and benchmark to advance deep learning for cardiac
+    MRI (Sci Data 2024). Also fetched https://github.com/CmrxRecon/CMRxRecon ''GitHub - CmrxRecon/CMRxRecon: Code
+    for the Cardiac MRI Reconstruction Challenge (CMRxRecon)''. Synapse pages (syn51471091, syn52965326) only returned
+    ''page is loading''.'
+  license_text: 'Article: ''This article is licensed under a Creative Commons Attribution 4.0 International License.''
+    No separate dataset license found. GitHub: code MIT; dataset ''after the embargo period (Dec 2023)'' may be
+    used with citation of listed manuscripts. [license to verify] for the data itself'
+  license_status: license to verify
+  size_text: 300 healthy volunteers (120 train / 60 val / 120 test); GB size not stated
+  acquisition_params: 3 T MAGNETOM Vida (Siemens), 32-channel cardiac coil; TrueFISP cine, MOLLI T1 map, T2-prep
+    FLASH T2 map; FOV 340x300 (LAX) / 340x340 mm (SAX), 1.5x1.5 mm in-plane; TR/TE cine 3.6/1.6 ms, T1 2.67/1.13,
+    T2 3.06/1.29; 24 ACS lines; matrix not stated; .mat made in MATLAB 2018a via mapVBVD
+  access: gated
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/cmrxrecon-2023-cardiac-kspace.md
+- id: sunnybrook-cardiac-dicom
+  anatomy:
+  - cardiac
+  formats:
+  - DICOM
+  source_url: https://www.cardiacatlas.org/sunnybrook-cardiac-data/
+  sample_file_url: null
+  page_title: Sunnybrook Cardiac Data - Cardiac Atlas Project
+  license_text: Public Domain (CC0 1.0 Universal); 'this data is free to use for any usage'; cite Radau et al.,
+    MIDAS Journal, http://hdl.handle.net/10380/3070
+  license_status: stated
+  size_text: 45 cine-MRI cases; 5 DICOM zip batches 363-839 MB each (~2.7 GB total, summed by me); manual contours
+    zip 1.37 MB; LV models zip 2.34 MB; patient csv 2.25 KB. Batches exceed 200 MB limit (not downloaded).
+  acquisition_params: not published
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: 'Range HEAD probe: HTTP/1.1 200 OK, Content-Type: text/html; charset=UTF-8. No ZIP downloaded because
+      HTTP 206 was not returned.'
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/sunnybrook-cardiac-dicom.md
+  license_verified_at: '2026-10-28'
+- id: acdc-cardiac-cine
+  anatomy:
+  - cardiac
+  formats:
+  - unknown
+  source_url: https://www.creatis.insa-lyon.fr/Challenge/acdc/databases.html
+  sample_file_url: null
+  page_title: Automated Cardiac Diagnosis Challenge (ACDC)
+  license_text: 'No license named. Page says: ''You must refer to this citation for any use of the ACDC database.''
+    (Bernard et al., IEEE TMI 37(11):2514-2525, 2018, doi 10.1109/TMI.2018.2837502). [license to verify]'
+  license_status: license to verify
+  size_text: '150 exams (5 groups of 30: NOR, MINF, DCM, HCM, RV); byte size not stated'
+  acquisition_params: 1.5 T Siemens Area and 3.0 T Siemens Trio Tim; SSFP cine short-axis, breath-hold; slice 5
+    mm (sometimes 8 mm); in-plane 1.37-1.68 mm; 28-40 images per cycle; TR/TE/matrix not published
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: Source links to Human Heart collection 637218c173e9f0047faa00fb. API lookup returned 404; alternate
+      database endpoint timed out after 30 seconds. No sample URL verified.
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/acdc-cardiac-cine.md
+- id: chaos-liver-mri-dicom
+  anatomy:
+  - liver
+  formats:
+  - DICOM
+  source_url: https://zenodo.org/records/3431873
+  sample_file_url: null
+  page_title: CHAOS - Combined (CT-MR) Healthy Abdominal Organ Segmentation Challenge Data (Zenodo); also https://chaos.grand-challenge.org/Data/
+    'Data Info - CHAOS - Grand Challenge'
+  license_text: cc-by-nc-sa-4.0
+  license_status: stated
+  size_text: '2.0 GB total: CHAOS_Train_Sets.zip 890.8 MB, CHAOS_Test_Sets.zip 1.1 GB (both >200 MB). MRI: 20 train
+    + 20 test cases (T1-DUAL, T2-SPIR); also 40 CT cases. Test ground truth never shared.'
+  acquisition_params: 'From grand-challenge page: 1.5T Philips; 12-bit DICOM; matrix 256x256; in-plane 1.36-1.89
+    mm; slice spacing 5.5-9 mm; 26-50 slices; T1-DUAL in/out-phase; T2-SPIR; TR/TE not published (page gives in-phase
+    4.6 ms / out-phase 2.3 ms)'
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: Range probe did not return 206
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/chaos-liver-mri-dicom.md
+  license_verified_at: '2026-10-28'
+  license_evidence: https://zenodo.org/records/3431873 (record metadata.license)
+- id: liverhccseg-multiphase-mri
+  anatomy:
+  - liver
+  formats:
+  - DICOM
+  - NIfTI
+  source_url: https://zenodo.org/records/8179129
+  sample_file_url: https://zenodo.org/records/8179129/files/LiverHccSeg_MetaData.xlsx
+  page_title: 'LiverHccSeg: A Publicly Available Multiphasic MRI Dataset with Liver and HCC Tumor Segmentations
+    and Inter-Rater Agreement Analysis (Zenodo v1.1)'
+  license_text: cc-by-4.0
+  license_status: stated
+  size_text: '2.6 GB total: dicoms.zip 1.7 GB, nifti_and_segms.zip 977.9 MB (both >200 MB, not downloaded); metadata
+    xlsx 12.9 kB'
+  acquisition_params: TCGA-LIHC multiphasic CE-MRI (pre/arterial/portal/delayed), 1993-2007, Philips and Siemens,
+    1.5T and 3T; median TR 365.8 ms, TE 26.4 ms, slice 9.5 mm, bandwidth 536.9 Hz; full table not on page
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: Range probe did not return 206
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/liverhccseg-multiphase-mri.md
+  license_verified_at: '2026-10-28'
+  license_evidence: https://zenodo.org/records/8179129 (record metadata.license)
+- id: free-breathing-liver-grpe-ismrmrd
+  anatomy:
+  - liver
+  formats:
+  - ISMRMRD
+  - HDF5
+  source_url: https://zenodo.org/records/20758499
+  sample_file_url: https://zenodo.org/records/20758499/files/grpe_t1_free_breathing.mrd?download=1
+  page_title: Free-breathing MRI of the liver (Zenodo, v4, published June 19, 2026); earlier v3 https://zenodo.org/records/15849308
+    same title
+  license_text: cc-by-4.0
+  license_status: stated
+  size_text: '283.8 MB total: grpe_t1_free_breathing.mrd 104.7 MB, .seq 3.8 MB, displacement_fields.npy 175.3 MB
+    (.mrd is >50 MB, not downloaded)'
+  acquisition_params: 3D Golden radial phase encoding (GRPE), free breathing, Pulseq sequence provided; field strength,
+    matrix, TR/TE not published on page
+  access: open
+  analysis:
+    format: ISMRMRD raw
+    encoding_matrix: &id006
+    - 154
+    - 154
+    - 154
+    coil_count: 6
+    acquisitions: 10800
+    domain: k-space
+    static_or_dynamic: unknown
+    phase_maximum: '0'
+    repetition_maximum: '0'
+    protocol_name: Test_short_libbalanceCheckOn_phantom
+    fields_read:
+    - 'dataset/xml: encoding/encodedSpace/matrixSize'
+    - 'dataset/xml: acquisitionSystemInformation/receiverChannels'
+    - 'dataset/xml: measurementInformation/protocolName'
+    - dataset/data.shape
+    - 'dataset/xml: encoding/encodingLimits/phase/maximum'
+    - 'dataset/xml: encoding/encodingLimits/repetition/maximum'
+    inspected: true
+    basis: file header
+    sample_path: data/raw/free-breathing-liver-grpe-ismrmrd/grpe_t1_free_breathing.mrd
+    source_checked_at: '2026-10-28'
+    dimensions: *id006
+    caveat: Source describes liver; header protocol name includes phantom. Temporal behavior and anatomy cannot
+      be established from this header.
+  notes_path: datasets/free-breathing-liver-grpe-ismrmrd.md
+  license_verified_at: '2026-10-28'
+  license_evidence: https://zenodo.org/records/20758499 (record metadata.license)
+- id: amos22-abdominal-mri
+  anatomy:
+  - liver
+  formats:
+  - unknown
+  source_url: https://zenodo.org/records/7155725
+  sample_file_url: null
+  page_title: 'AMOS: A large-scale abdominal multi-organ benchmark for versatile medical image segmentation (Zenodo
+    v1); also https://amos22.grand-challenge.org/ ''Home - Multi-Modality Abdominal Multi-Organ Segmentation Challenge
+    2022 - Grand Challenge'''
+  license_text: cc-by-4.0
+  license_status: stated
+  size_text: 24.2 GB single file amos22.zip (500 CT + 100 MRI; liver is one of 15 labelled organs). Not downloaded.
+  acquisition_params: not published (multi-center, multi-vendor, multi-phase)
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: Range probe did not return 206
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/amos22-abdominal-mri.md
+  license_verified_at: '2026-10-28'
+  license_evidence: https://zenodo.org/records/7155725 (record metadata.license)
+- id: cmrxrecon-t1-mapping
+  anatomy:
+  - T1 mapping
+  formats:
+  - MATLAB .mat
+  source_url: https://pmc.ncbi.nlm.nih.gov/articles/PMC11199635/
+  sample_file_url: null
+  page_title: 'CMRxRecon: A publicly available k-space dataset and benchmark to advance deep learning for cardiac
+    MRI'
+  license_text: '[license to verify]  (article is CC BY 4.0; no separate dataset license stated. GitHub README https://github.com/CmrxRecon/CMRxRecon
+    says: ''free to use and/or refer to the CMRxRecon challenge and datasets in your own research after the embargo
+    period (Dec 2023), provided that you cite the following manuscripts'')'
+  license_status: license to verify
+  size_text: 'not published (GitHub: training 120 cases fully sampled, validation 60; 300 volunteers total; CMRxRecon2024
+    extension: 330 volunteers, arXiv 2406.19043)'
+  acquisition_params: 3T Siemens MAGNETOM Vida, 32-ch cardiac coil, MOLLI 4-(1)-3-(1)-2 (9 images), TR/TE ~2.67-2.7/1.1
+    ms, FOV 340x340 mm, 1.5x1.5 mm in-plane, 5 mm slices, 5-6 SAX slices, FA 35, partial Fourier 6/8, R=2, 24 ACS
+    lines; matrix and TIs not reported
+  access: gated
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: 'Gated: requires provider approval/login; no authenticated download attempted.'
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/cmrxrecon-t1-mapping.md
+- id: zenodo-sms-t1-radial-flash
+  anatomy:
+  - T1 mapping
+  formats:
+  - BART cfl/hdr
+  source_url: https://zenodo.org/records/3969809
+  sample_file_url: https://zenodo.org/records/3969809/files/brain-inter5.tgz
+  page_title: 'Data for: Model-Based Reconstruction for Simultaneous Multi-Slice T1 Mapping using Single-Shot Inversion-Recovery
+    Radial FLASH | Zenodo'
+  license_text: cc-by-4.0
+  license_status: stated
+  size_text: 5.5 GB total; smallest archives e.g. brain-inter5.tgz 10.1 MB, brain-sms3-aligned.tgz 24.4 MB, phantom-sms3.tgz
+    60.3 MB
+  acquisition_params: not published on page (paper DOI 10.1002/mrm.28497)
+  access: open
+  analysis:
+    format: BART cfl/hdr in TAR
+    dimensions:
+    - 512
+    - 1
+    - 1
+    - 16
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 210
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    header_member: brain/inter5/vol_1-inter5-center.hdr
+    payload_member: brain/inter5/vol_1-inter5-center.cfl
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read:
+    - 'BART # Dimensions'
+    - TAR member names and sizes
+    caveat: BART dimensions do not encode anatomy or axis semantics; domain and temporal behavior require acquisition
+      documentation.
+    inspected: true
+    basis: file header
+    sample_path: data/raw/zenodo-sms-t1-radial-flash/brain-inter5.tgz
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/zenodo-sms-t1-radial-flash.md
+  license_verified_at: '2026-10-28'
+  license_evidence: https://zenodo.org/records/3969809 (record metadata.license)
+- id: zenodo-radial-flash-cardiac-t1
+  anatomy:
+  - T1 mapping
+  formats:
+  - BART cfl/hdr
+  source_url: https://zenodo.org/records/5707688
+  sample_file_url: https://zenodo.org/records/5707688/files/volunteer.tgz
+  page_title: 'Data for: Free-Breathing Myocardial T1 Mapping using Inversion-Recovery Radial FLASH and Motion-Resolved
+    Model-Based Reconstruction (Part 1/2) | Zenodo'
+  license_text: cc-by-4.0
+  license_status: stated
+  size_text: 36.3 GB total (volunteer.tgz 4.2 MB; others 1.3-7.1 GB); Part 2/2 at https://zenodo.org/records/7350323
+    (not fetched by me)
+  acquisition_params: not published on page (paper DOI 10.1002/mrm.29521)
+  access: open
+  analysis:
+    format: BART cfl/hdr in TAR
+    dimensions:
+    - 256
+    - 218
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    - 1
+    header_member: volunteer/volunteer/MOLLI/apex/T1maps/vol9-MOLLI-apex.hdr
+    payload_member: volunteer/volunteer/MOLLI/apex/T1maps/vol9-MOLLI-apex.cfl
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read:
+    - 'BART # Dimensions'
+    - TAR member names and sizes
+    caveat: BART dimensions do not encode anatomy or axis semantics; domain and temporal behavior require acquisition
+      documentation.
+    inspected: true
+    basis: file header
+    sample_path: data/raw/zenodo-radial-flash-cardiac-t1/volunteer.tgz
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/zenodo-radial-flash-cardiac-t1.md
+  license_verified_at: '2026-10-28'
+  license_evidence: https://zenodo.org/records/5707688 (record metadata.license)
+- id: rrsg2020-t1-challenge
+  anatomy:
+  - T1 mapping
+  formats:
+  - unknown
+  source_url: https://zenodo.org/records/8419809
+  sample_file_url: null
+  page_title: Results of the ISMRM 2020 joint Reproducible Research & Quantitative MR study groups reproducibility
+    challenge on phantom and human brain T1 mapping | Zenodo
+  license_text: cc-zero
+  license_status: stated
+  size_text: 217.1 MB (single zip Dataset_10.55458_NeuroLibre_00014_2654c1.zip) - over 200 MB, not downloaded
+  acquisition_params: not published on page (page says phantom data only, despite title mentioning human brain)
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: Range probe did not return 206
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/rrsg2020-t1-challenge.md
+  license_verified_at: '2026-10-28'
+  license_evidence: https://zenodo.org/records/8419809 (record metadata.license)
+- id: mpg-7t-trt-mp2rage
+  anatomy:
+  - T1 mapping
+  formats:
+  - unknown
+  source_url: http://openscience.cbs.mpg.de/7t_trt/
+  sample_file_url: null
+  page_title: A high resolution 7-Tesla resting-state fMRI test-retest dataset with cognitive and physiological
+    measures
+  license_text: '[license to verify]'
+  license_status: license to verify
+  size_text: not published
+  acquisition_params: not published (see paper)
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: Published FTP endpoint ftp://141.5.101.133/ timed out after 20 seconds. Alternative XNAT workflow not
+      authenticated; license to verify.
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/mpg-7t-trt-mp2rage.md
+- id: qsm-challenge-2016
+  anatomy:
+  - QSM
+  formats:
+  - NIfTI
+  - MATLAB .mat
+  source_url: http://www.neuroimaging.at/pages/qsm.php
+  sample_file_url: http://www.neuroimaging.at/media//qsm/20170327_qsm2016_recon_challenge.zip
+  page_title: Quantitative Susceptibility Mapping Software | Neuroimaging - Medical University of Graz
+  license_text: '[license to verify]  (page states no terms)'
+  license_status: license to verify
+  size_text: 240 MB (qsm_recon_challenge_2016.zip) - over 200 MB, not downloaded
+  acquisition_params: 'not published on page (search snippets from papers: Siemens Tim Trio 3T, multi-orientation
+    GRE magnitude/phase + MPRAGE; unverified)'
+  access: open
+  analysis:
+    format: NIfTI
+    shape: &id007
+    - 160
+    - 160
+    - 160
+    voxel_size_mm:
+    - 1.062
+    - 1.062
+    - 1.071
+    domain: image
+    static_or_dynamic: static
+    coil_count: unknown
+    fields_read:
+    - NIfTI dim
+    - NIfTI pixdim
+    inspected: true
+    basis: file header
+    sample_path: data/raw/qsm-challenge-2016/chi_cosmos.nii.gz
+    source_checked_at: '2026-10-28'
+    dimensions: *id007
+  notes_path: datasets/qsm-challenge-2016.md
+- id: qsm-challenge-2.0-sim
+  anatomy:
+  - QSM
+  formats:
+  - NIfTI
+  source_url: https://zenodo.org/record/4559541
+  sample_file_url: null
+  page_title: QSM Reconstruction Challenge 2.0 - Data and Code Provided to Participants | Zenodo
+  license_text: cc-by-4.0
+  license_status: stated
+  size_text: 1.6 GB total (Stage1.zip 532.3 MB, Stage2.zip 1.0 GB, functions4challenge.zip 448.2 kB)
+  acquisition_params: 'From https://qsm.snu.ac.kr/qsm-challenge (fetched; title ''5th INTERNATIONAL WORKSHOP ON
+    MRI PHASE CONTRAST & QUANTITATIVE SUSCEPTIBILITY MAPPING - QSM CHALLENGE''): simulated 7T, 0.64 mm iso (1 mm
+    by k-space cropping), TR 50 ms, TE 4/12/20/28 ms, FA 15. That page states no license (''All Rights Reserved
+    by LIST''); Zenodo record is CC BY 4.0.'
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: Range probe did not return 206
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/qsm-challenge-2.0-sim.md
+  license_verified_at: '2026-10-28'
+  license_evidence: https://zenodo.org/record/4559541 (record metadata.license)
+- id: qsm-consensus-example-data
+  anatomy:
+  - QSM
+  formats:
+  - DICOM
+  - NIfTI
+  source_url: https://zenodo.org/records/7795492
+  sample_file_url: null
+  page_title: 'Recommended Implementation of Quantitative Susceptibility Mapping for Clinical Research in The Brain:
+    A Consensus of the ISMRM Electro-Magnetic Tissue Properties Study Group'
+  license_text: cc-by-4.0
+  license_status: stated
+  size_text: 7.1 GB total (Example_Data_Result_Code 6.1 GB; Example_DICOM_Code 1.0 GB)
+  acquisition_params: 'From https://sepia-documentation.readthedocs.io/en/latest/tutorial/SEPIA101/Exercise1.html
+    (title ''Exercise 1''): 3T Siemens Prisma_fit, 5-echo monopolar 3D GRE, matrix 176x256x144, 1 mm iso, echo spacing
+    ~5.83 ms. Not on the Zenodo page.'
+  access: open
+  analysis:
+    inspected: false
+    basis: documentation only
+    reason: Range probe did not return 206
+    dimensions: unknown
+    coil_count: unknown
+    static_or_dynamic: unknown
+    domain: unknown
+    fields_read: []
+    source_checked_at: '2026-10-28'
+  notes_path: datasets/qsm-consensus-example-data.md
+  license_verified_at: '2026-10-28'
+  license_evidence: https://zenodo.org/records/7795492 (record metadata.license)

@@ -38,26 +38,29 @@ def inspect_h5(path: Path) -> dict:
 
 
 def inspect_ismrmrd(path: Path) -> dict:
-    import ismrmrd
+    import xml.etree.ElementTree as ET
 
-    info = {"format": "ISMRMRD raw"}
-    with ismrmrd.File(str(path), "r") as f:
-        dsets = f.list()
-        info["groups"] = list(dsets)
-        header = f.read_header()
-        enc = header.encoding[0]
-        info["encoding_matrix"] = [enc.encodedSpace.matrixSize.x,
-                                   enc.encodedSpace.matrixSize.y,
-                                   enc.encodedSpace.matrixSize.z]
-        info["recon_matrix"] = [enc.reconSpace.matrixSize.x,
-                                enc.reconSpace.matrixSize.y,
-                                enc.reconSpace.matrixSize.z]
-        info["field_strength_t"] = header.acquisitionSystemInformation.systemFieldStrength_T
-        info["receiver_channels"] = header.acquisitionSystemInformation.receiverChannels
-        info["domain"] = "k-space"
-        if header.userParameters is not None:
-            info["user_parameters"] = [p.name for p in header.userParameters.userParameterLong] or None
-    return info
+    with h5py.File(path, "r") as f:
+        root = ET.fromstring(f["dataset/xml"][0])
+        ns = {"m": "http://www.ismrm.org/ISMRMRD"}
+        def value(key):
+            node = root.find(".//" + "m:" + key.replace("/", "/m:"), ns)
+            return node.text if node is not None else None
+        matrix = [int(value("encoding/encodedSpace/matrixSize/" + axis)) for axis in "xyz"]
+        phase_max = value("encoding/encodingLimits/phase/maximum")
+        repetition_max = value("encoding/encodingLimits/repetition/maximum")
+        dynamic = any(v is not None and int(v) > 0 for v in (phase_max, repetition_max))
+        return {"format": "ISMRMRD raw", "encoding_matrix": matrix,
+                "coil_count": int(value("acquisitionSystemInformation/receiverChannels")),
+                "acquisitions": f["dataset/data"].shape[0], "domain": "k-space",
+                "static_or_dynamic": "dynamic" if dynamic else "unknown",
+                "phase_maximum": phase_max, "repetition_maximum": repetition_max,
+                "protocol_name": value("measurementInformation/protocolName"),
+                "fields_read": ["dataset/xml: encoding/encodedSpace/matrixSize",
+                                "dataset/xml: acquisitionSystemInformation/receiverChannels",
+                                "dataset/xml: measurementInformation/protocolName", "dataset/data.shape",
+                                "dataset/xml: encoding/encodingLimits/phase/maximum",
+                                "dataset/xml: encoding/encodingLimits/repetition/maximum"]}
 
 
 def inspect_nifti(path: Path) -> dict:
@@ -70,10 +73,12 @@ def inspect_nifti(path: Path) -> dict:
         "shape": shape,
         "voxel_size_mm": [round(float(z), 3) for z in img.header.get_zooms()[:3]],
         "domain": "image",
-        "static_or_dynamic": "dynamic" if len(shape) == 4 and shape[3] > 1 else "static",
+        "static_or_dynamic": "unknown" if len(shape) > 3 else "static",
+        "coil_count": "unknown",
+        "fields_read": ["NIfTI dim", "NIfTI pixdim"],
     }
     if len(shape) == 4 and shape[3] > 1:
-        info["time_points"] = shape[3]
+        info["fourth_dimension_size"] = shape[3]
     return info
 
 
@@ -84,6 +89,10 @@ def inspect_dicom(path: Path) -> dict:
     first = pydicom.dcmread(str(files[0]), stop_before_pixels=True)
     info = {
         "format": "DICOM",
+        "dimensions": [int(first.Rows), int(first.Columns)],
+        "coil_count": "unknown",
+        "static_or_dynamic": "unknown",
+        "fields_read": [tag for tag in ("Rows", "Columns", "NumberOfFrames", "Modality", "SeriesDescription", "SequenceName", "ReceiveCoilName", "MagneticFieldStrength") if tag in first],
         "file_count": len(files),
         "modality": str(getattr(first, "Modality", "")) or None,
         "series_description": str(getattr(first, "SeriesDescription", "")) or None,
@@ -95,7 +104,7 @@ def inspect_dicom(path: Path) -> dict:
     frames = getattr(first, "NumberOfFrames", None)
     if frames:
         info["frames"] = int(frames)
-        info["static_or_dynamic"] = "dynamic" if int(frames) > 1 else "static"
+        info["dimensions"].append(int(frames))
     info = {k: v for k, v in info.items() if v is not None}
     return info
 
@@ -110,19 +119,48 @@ def inspect_mha(path: Path) -> dict:
     return info
 
 
+def inspect_bart_archive(path: Path) -> dict:
+    import math
+    import tarfile
+
+    with tarfile.open(path) as archive:
+        members = archive.getmembers()
+        for member in members:
+            if '..' in member.name or member.name.startswith('/'):
+                raise ValueError('unsafe TAR member')
+        headers = [m for m in members if m.isfile() and m.name.endswith('.hdr') and '/ROIs/' not in m.name]
+        header = next((m for m in headers if '/T1maps/' in m.name), headers[0] if headers else None)
+        if header is None or header.size > 4096:
+            raise ValueError('missing or oversized BART header')
+        with archive.extractfile(header) as stream:
+            lines = stream.read().decode('ascii').splitlines()
+        dimensions = [int(v) for line in lines if not line.startswith('#') for v in line.split()]
+        if not dimensions or any(v <= 0 for v in dimensions):
+            raise ValueError('invalid BART dimensions')
+        payload = archive.getmember(header.name[:-4] + '.cfl')
+        if not payload.isfile() or payload.size != math.prod(dimensions) * 8:
+            raise ValueError('BART complex64 payload size does not match header')
+        return {'format': 'BART cfl/hdr in TAR', 'dimensions': dimensions,
+                'header_member': header.name, 'payload_member': payload.name,
+                'coil_count': 'unknown', 'static_or_dynamic': 'unknown', 'domain': 'unknown',
+                'fields_read': ['BART # Dimensions', 'TAR member names and sizes'],
+                'caveat': 'BART dimensions do not encode anatomy or axis semantics; domain and temporal behavior require acquisition documentation.'}
+
+
 def inspect(path: Path) -> dict:
     name = path.name.lower()
+    if name.endswith((".tgz", ".tar.gz")):
+        return inspect_bart_archive(path)
     if path.is_dir() or name.endswith(".dcm"):
         return inspect_dicom(path)
     if name.endswith(".nii") or name.endswith(".nii.gz"):
         return inspect_nifti(path)
     if name.endswith((".mha", ".mhd")):
         return inspect_mha(path)
-    if name.endswith((".h5", ".hdf5", ".mat")):
-        try:
-            return inspect_ismrmrd(path)
-        except Exception:
-            return inspect_h5(path)
+    if name.endswith((".h5", ".hdf5", ".mat", ".mrd")):
+        with h5py.File(path, "r") as f:
+            raw = "dataset/xml" in f and "dataset/data" in f
+        return inspect_ismrmrd(path) if raw else inspect_h5(path)
     raise SystemExit(f"unsupported file type: {path.name}")
 
 
