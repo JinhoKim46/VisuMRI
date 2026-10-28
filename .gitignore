@@ -1,0 +1,21 @@
+# secrets
+.env
+
+# raw data: keep links and download scripts in git, not files
+data/
+*.h5
+*.hdf5
+*.mat
+*.nii
+*.nii.gz
+*.dcm
+*.ima
+*.ismrmrd
+*.zip
+*.tar
+*.tar.gz
+
+# python
+__pycache__/
+*.pyc
+.venv/
